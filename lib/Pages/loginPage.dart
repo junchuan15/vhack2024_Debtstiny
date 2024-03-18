@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:debtstiny/Pages/homePage.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/text_field.dart';
 
@@ -6,7 +7,6 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signUserIn() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +33,10 @@ class LoginPage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                     border: Border.all(
-                            color: Colors.grey, 
-                            width: 2,
-                          ),
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(60),
                         topRight: Radius.circular(60))),
@@ -97,7 +97,14 @@ class LoginPage extends StatelessWidget {
                             ),
                             SizedBox(height: 30),
                             Button(
-                              onTap: signUserIn,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomePage(),
+                                  ),
+                                );
+                              },
                             ),
                             SizedBox(height: 50),
                             Padding(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:debtstiny/Pages/login_page.dart';
+import 'package:debtstiny/Pages/loginPage.dart';
 
 void main() {
   runApp(const MyApp());
