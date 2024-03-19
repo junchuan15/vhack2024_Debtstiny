@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:debtstiny/Components/btm_naviBar.dart';
+
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,6 +15,7 @@ class HomePage extends StatelessWidget {
           style: TextStyle(fontSize: 24),
         ),
       ),
+      bottomNavigationBar: BtmNaviBar(),
     );
   }
 }

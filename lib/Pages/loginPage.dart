@@ -56,6 +56,7 @@ class LoginPage extends StatelessWidget {
                                 'Sign In',
                                 style: TextStyle(
                                   color: Color(0xFF052C51),
+                                  fontFamily: 'PT Sans',
                                   fontSize: 40,
                                   fontWeight: FontWeight.bold,
                                 ),

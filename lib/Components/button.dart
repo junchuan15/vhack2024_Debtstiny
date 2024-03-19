@@ -20,6 +20,7 @@ class Button extends StatelessWidget {
           child: Text(
             "Login",
             style: TextStyle(
+              fontFamily: 'PT Sans',
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,
