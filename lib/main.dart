@@ -1,3 +1,4 @@
+import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Pages/login_page.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage()
+      home: MainPage(),
     );
   }
 }
