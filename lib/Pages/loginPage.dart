@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:debtstiny/Pages/homePage.dart';
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/text_field.dart';
 
@@ -102,7 +102,7 @@ class LoginPage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePage(),
+                                    builder: (context) => BtmNaviController(),
                                   ),
                                 );
                               },

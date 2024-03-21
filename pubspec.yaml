@@ -63,3 +63,5 @@ flutter:
           weight: 700
   assets:
         - lib/Images/Scoin.webp
+        - lib/Images/MaggiKari.webp
+        - lib/Images/MaggiAyam.webp
