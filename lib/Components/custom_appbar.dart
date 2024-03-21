@@ -4,22 +4,32 @@ class CustomAppBar extends StatelessWidget {
   final IconButton secondIcon;
 
   const CustomAppBar({
-    super.key,
+    Key? key,
     required this.secondIcon,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            color: Colors.white,
-            onPressed: () {},
-            icon: const Icon(Icons.menu),
+        children: <Widget>[
+          SizedBox(
+            width: 5,
           ),
-          secondIcon,
+          Expanded(
+            child: IconButton(
+              iconSize: 30,
+              color: Colors.white,
+              onPressed: () {},
+              icon: const Icon(Icons.menu),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: secondIcon,
+          ),
         ],
       ),
       actions: [
