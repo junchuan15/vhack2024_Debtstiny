@@ -1,5 +1,3 @@
-import 'package:debtstiny/Pages/navpages/bottom_nav.dart';
-import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Pages/login_page.dart';
 
