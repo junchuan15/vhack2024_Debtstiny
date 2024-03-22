@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-    
-class PlanPage extends StatelessWidget {
 
-  const PlanPage({ Key? key }) : super(key: key);
-  
+class PlanPage extends StatelessWidget {
+  PlanPage({super.key});
+
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFD3F4E3),
       body: CustomScrollView(
@@ -74,3 +73,4 @@ Widget build(BuildContext context) {
     );
   }
 }
+
