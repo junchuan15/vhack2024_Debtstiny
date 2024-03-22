@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconButton secondIcon;
 
   const CustomAppBar({
@@ -11,36 +12,31 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Row(
-        children: <Widget>[
-          SizedBox(
-            width: 5,
-          ),
-          Expanded(
-            child: IconButton(
-              iconSize: 30,
-              color: Colors.white,
-              onPressed: () {},
-              icon: const Icon(Icons.menu),
-            ),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          Expanded(
-            child: secondIcon,
-          ),
-        ],
+      leading: IconButton(
+        iconSize: 30,
+        color: Colors.white,
+        onPressed: () {
+          // Handle menu icon onPressed event
+        },
+        icon: const Icon(Icons.menu),
       ),
       actions: [
         IconButton(
           color: Colors.white,
           iconSize: 40,
           icon: const Icon(Icons.account_circle),
-          onPressed: () {},
+          onPressed: () {
+            // Handle account icon onPressed event
+          },
         )
       ],
       backgroundColor: Color.fromRGBO(21, 44, 81, 1),
+      title: secondIcon,
+      titleSpacing: -10,
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
