@@ -13,7 +13,7 @@ class TitleBar extends StatelessWidget {
     return Container(
       color: Color.fromRGBO(21, 44, 81, 1),
       width: double.infinity,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
       child: Text(
         text,
         style: TextStyle(
