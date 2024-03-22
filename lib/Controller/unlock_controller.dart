@@ -1,19 +1,19 @@
-import 'package:debtstiny/Pages/redeem_food_page.dart';
 import 'package:flutter/material.dart';
-import 'package:debtstiny/Components/home_backBar.dart';
-import 'package:debtstiny/Components/scoinBox.dart';
-import 'package:debtstiny/Components/redeemProgressBar.dart';
+import 'package:debtstiny/Components/unlockProgressBar.dart';
+import 'package:debtstiny/Pages/redeem_unlock.dart';
 import 'package:debtstiny/Pages/redeem_daily_page.dart';
 import 'package:debtstiny/Pages/redeem_voucher_page.dart';
+import 'package:debtstiny/Components/home_backBar.dart';
+import 'package:debtstiny/Components/scoinBox.dart';
 
-class RedeemTabController extends StatefulWidget {
-  const RedeemTabController({Key? key}) : super(key: key);
+class UnlockController extends StatefulWidget {
+  const UnlockController({Key? key}) : super(key: key);
 
   @override
-  _RedeemTabControllerState createState() => _RedeemTabControllerState();
+  _UnlockControllerState createState() => _UnlockControllerState();
 }
 
-class _RedeemTabControllerState extends State<RedeemTabController>
+class _UnlockControllerState extends State<UnlockController>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -40,12 +40,12 @@ class _RedeemTabControllerState extends State<RedeemTabController>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ScoinBox(scoinCount: 993),
-          RedeemProgressBar(),
+          UnlockProgressBar(),
           SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20), 
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -59,7 +59,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
               controller: _tabController,
               indicator: BoxDecoration(
                 color: Color(0xFF152C51),
-                borderRadius: BorderRadius.circular(20), 
+                borderRadius: BorderRadius.circular(20),
               ),
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xFF152C51),
@@ -67,7 +67,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
               tabs: const [
                 Tab(
                   child: Text(
-                    'Food',
+                    'Unlock',
                     style: TextStyle(
                       fontFamily: 'PT Sans',
                       fontSize: 18,
@@ -102,7 +102,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
             child: TabBarView(
               controller: _tabController,
               children: const [
-                RedeemFoodPage(),
+                RedeemUnlock(),
                 RedeemDailyPage(),
                 RedeemVoucherPage(),
               ],

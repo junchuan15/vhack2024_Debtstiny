@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  youtube_player_flutter: ^9.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -65,3 +65,28 @@ flutter:
         - lib/Images/Scoin.webp
         - lib/Images/MaggiKari.webp
         - lib/Images/MaggiAyam.webp
+        - lib/Images/JulieGold.webp
+        - lib/Images/JulieRed.webp
+        - lib/Images/Sardine.webp
+        - lib/Images/Bakedbean.webp
+        - lib/Images/oil2kg.webp
+        - lib/Images/oil5kg.jpg
+        - lib/Images/rice5kg.jpg
+        - lib/Images/rice10kg.jpg
+        - lib/Images/toothbrush.jpg
+        - lib/Images/toothpaste.jpg
+        - lib/Images/dish.jpg
+        - lib/Images/showergel.png
+        - lib/Images/tissue.png
+        - lib/Images/washingpowder.jpg
+        - lib/Images/shampoo.png
+        - lib/Images/pad.jpg
+        - lib/Images/tngo10.png
+        - lib/Images/tngo50.png
+        - lib/Images/tngo100.webp
+        - lib/Images/debt500.jpg
+        - lib/Images/debt1000.jpg
+        - lib/Images/debt2000.jpg
+        - lib/Images/progressbar.jpg
+        - lib/Images/excellent.png
+        - lib/Images/unlockbar.jpg

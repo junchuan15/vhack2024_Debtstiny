@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Controller/btm_navi_controller.dart';
-import 'package:debtstiny/Components/button.dart';
+import 'package:debtstiny/Components/button_long.dart';
 import 'package:debtstiny/Components/text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -97,15 +97,17 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 30),
-                            Button(
+                            ButtonLong(
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => BtmNaviController(),
+                                   
                                   ),
                                 );
                               },
+                              title: 'Login',
                             ),
                             SizedBox(height: 50),
                             Padding(

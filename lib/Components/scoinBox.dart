@@ -8,7 +8,7 @@ class ScoinBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.all(30),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -58,12 +58,7 @@ class ScoinBox extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider( 
-                color: Color(0xFF33363F),
-                thickness: 3,
-                height: 10,
-              ),
-              SizedBox(height: 4),
+              SizedBox(height: 8),
               Text(
                 'RM100.00 = 1 S-Coin',
                 style: TextStyle(
