@@ -1,27 +1,23 @@
-import 'package:debtstiny/Pages/navpages/consult_page.dart';
-import 'package:debtstiny/Pages/navpages/budget_page.dart';
-import 'package:debtstiny/Pages/navpages/plan_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:debtstiny/Pages/register_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<StatefulWidget> createState() {
-    return _HomePageState();
-  }
-}
-
-class _HomePageState extends State<HomePage>{
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Home'),
-      )
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RegisterPage()),
+            );
+          },
+          child: Text('Sign Up'),
+        ),
+      ),
     );
   }
-
 }
