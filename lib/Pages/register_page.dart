@@ -30,19 +30,15 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: Color(0xFFD3F4E3),
+        color: Colors.white,
+    child: Padding(
+    padding: EdgeInsets.only(top:50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-
             Center(
               child: Column(
                 children: <Widget>[
-                  Image.asset(
-                    'lib/Images/logo-s.png',
-                    width: 200,
-                    height: 200,
-                  ),
                   Text(
                     'Sign Up',
                     style: TextStyle(
@@ -60,23 +56,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
+
             ),
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(60),
-                    topRight: Radius.circular(60),
-                  ),
-                ),
+              // child: Container(
+              //   decoration: BoxDecoration(
+              //     color: Colors.white,
+              //     border: Border.all(
+              //       color: Colors.grey,
+              //       width: 2,
+              //     ),
+              //     borderRadius: BorderRadius.only(
+              //       topLeft: Radius.circular(60),
+              //       topRight: Radius.circular(60),
+              //     ),
+              //   ),
 
-                child: Padding(
-                padding: EdgeInsets.all(10),
+
     child: ListView(
     shrinkWrap: true,
     children: <Widget>[
@@ -165,12 +161,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         ],
                   ),
                 ),
-              ),
-            ),
+
+            // ),
           ],
         ),
       ),
-    );
+    ));
   }
 
 }
