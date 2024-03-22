@@ -1,3 +1,4 @@
+import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/text_field.dart';
@@ -97,7 +98,16 @@ class LoginPage extends StatelessWidget {
                             ),
                             SizedBox(height: 30),
                             Button(
-                              onTap: signUserIn,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MainPage(),
+                                  ),
+                                );
+                              },
+                              title: 'Login',
+                              width: 300,
                             ),
                             SizedBox(height: 50),
                             Padding(
