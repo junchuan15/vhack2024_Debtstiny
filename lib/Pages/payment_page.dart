@@ -2,7 +2,7 @@ import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'payment_done_page.dart';
+import '../payment_done_page.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);

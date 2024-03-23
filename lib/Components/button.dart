@@ -4,14 +4,12 @@ class Button extends StatelessWidget {
   final Function()? onTap;
   final String title;
   final double width;
-  final String title;
-  final double width;
 
   const Button({
     Key? key,
     required this.onTap,
     required this.title,
-    required this.width, 
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -19,7 +17,7 @@ class Button extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: width, 
+        width: width,
         padding: const EdgeInsets.all(13),
         margin: const EdgeInsets.symmetric(horizontal: 3),
         decoration: BoxDecoration(
@@ -27,12 +25,9 @@ class Button extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
-        child: Center(
           child: Text(
             title,
-            title,
             style: TextStyle(
-              fontFamily: 'PT Sans',
               fontFamily: 'PT Sans',
               color: Colors.white,
               fontWeight: FontWeight.bold,
