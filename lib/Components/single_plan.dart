@@ -1,7 +1,8 @@
 import 'package:debtstiny/Components/plan_details.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../Pages/plan.dart';
+
+import '../Entities/plan.dart';
 
 class SinglePlan extends StatelessWidget {
   final Plan plan;

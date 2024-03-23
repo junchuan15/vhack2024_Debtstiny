@@ -1,105 +1,96 @@
-import 'package:debtstiny/Components/debt.dart';
-import 'package:debtstiny/Pages/debt_view.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'package:debtstiny/Components/debt_details.dart';
+import 'package:debtstiny/Components/single_plan.dart';
+import 'package:debtstiny/Components/top_backBar.dart';
+import 'package:intl/intl.dart';
+import '../Entities/plan.dart';
+import '../Pages/main_page.dart';
 
-class DebtDisplay extends StatelessWidget {
-  final Debt debt;
-  DebtDisplay({Key? key, required this.debt}) : super(key: key);
+class PlanDetails extends StatelessWidget {
+  final Plan plan;
+
+  const PlanDetails({
+    Key? key,
+    required this.plan,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DebtView(debt: debt),
-          ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey.withOpacity(0.7),
-          ),
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 3,
-              blurRadius: 3,
+    NumberFormat formatter = NumberFormat('#,##0.00', 'en_US');
+
+    return Scaffold(
+      appBar: TopBackBar(
+        title: 'Plan',
+      ),
+      backgroundColor: Color(0xFFF3FCF7),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: ListView.builder(
+                itemCount: plan.debtList.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    // First item is SinglePlan widget
+                    return SinglePlan(plan: plan);
+                  } else {
+                    // Rest of the items are DebtDetails widgets
+                    return DebtDetails(debt: plan.debtList[index - 1]);
+                  }
+                },
+              ),
             ),
-          ],
-        ),
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          Container(
+            color: Color(0xFFF3FCF7),
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
-                  child: Image.asset(
-                    debt.image_url,
-                    width: 80,
-                    height: 50,
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      debt.creditor,
+                      'Total',
                       style: TextStyle(
-                        fontFamily: 'PT Sans',
+                        fontSize: 18.0,
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Color(0xFF33363F),
-                      ),
-                      softWrap: true,
-                    ),
-                    Text(
-                      debt.type,
-                      style: TextStyle(
-                        fontFamily: 'PT Sans',
-                        color: Color(0xFF33363F),
-                        fontSize: 16,
                       ),
                     ),
                     Text(
-                      'Balance: RM ${debt.balance.toStringAsFixed(2)}',
+                      'RM ${formatter.format(plan.total)}',
                       style: TextStyle(
-                        fontFamily: 'PT Sans',
-                        color: Color(0xFF33363F),
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      'APR: ${debt.APR.toStringAsFixed(2)}%',
-                      style: TextStyle(
-                        fontFamily: 'PT Sans',
-                        color: Color(0xFF33363F),
-                        fontSize: 16,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 10.0),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromRGBO(21, 44, 81, 1)),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainPage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Start',
+                    style: TextStyle(color: Colors.white,fontSize: 18),
+                  ),
+                ),
               ],
             ),
-            SizedBox(height: 10),
-            LinearPercentIndicator(
-              animation: true,
-              animationDuration: 5000,
-              lineHeight: 8,
-              percent: debt.progress,
-              progressColor: Color(0xFF2B5BA9),
-              backgroundColor: Color(0xFFB6B6B6),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

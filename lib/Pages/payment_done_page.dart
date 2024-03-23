@@ -1,9 +1,9 @@
-import 'package:debtstiny/Pages/navpages/main_page.dart';
-import 'package:debtstiny/Pages/payment.dart';
+import 'package:debtstiny/Entities/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../Components/top_backBar.dart';
+import 'main_page.dart';
 
 class PaymentDonePage extends StatelessWidget {
   const PaymentDonePage({Key? key}) : super(key: key);

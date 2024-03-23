@@ -1,13 +1,13 @@
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/title_bar.dart';
-import 'package:debtstiny/Pages/debt.dart';
+import 'package:debtstiny/Entities/debt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:intl/intl.dart';
 
-import '../plan.dart';
+import '../Entities/plan.dart';
 
 class PlanPage extends StatelessWidget {
   const PlanPage({super.key});
@@ -93,13 +93,13 @@ class PlanPage extends StatelessWidget {
           TitleBar(text: 'Select a repayment plan'),
           Container(
             color: Color(0xFFF3FCF7),
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(15.0),
             // Adjust padding as needed
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                     elevation: 6,
                     color: Colors.white,
                     surfaceTintColor: Colors.transparent,
@@ -108,7 +108,7 @@ class PlanPage extends StatelessWidget {
                       side: BorderSide(color: Colors.grey,width: 2),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
