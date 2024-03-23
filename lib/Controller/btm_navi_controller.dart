@@ -1,32 +1,33 @@
-import 'package:debtstiny/Pages/navpages/consult_page.dart';
-import 'package:debtstiny/Pages/navpages/budget_page.dart';
-import 'package:debtstiny/Pages/navpages/home_page.dart';
-import 'package:debtstiny/Pages/navpages/plan_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:debtstiny/Pages/consult_page.dart';
+import 'package:debtstiny/Pages/budget_page.dart';
+import 'package:debtstiny/Pages/home_page.dart';
+import 'package:debtstiny/Pages/plan_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class BtmNaviController extends StatefulWidget {
+  const BtmNaviController({Key? key});
 
   @override
   State<StatefulWidget> createState() {
-    return _MainPageState();
+    return _BtmNaviControllerState();
   }
 }
 
-class _MainPageState extends State<MainPage>{
-  List pages = const[
+class _BtmNaviControllerState extends State<BtmNaviController> {
+  List pages = [
     HomePage(),
     PlanPage(),
     BudgetPage(),
     ConsultPage(),
   ];
   int currentIndex = 0;
-  void onTap(int index){
+
+  void onTap(int index) {
     setState(() {
       currentIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +35,13 @@ class _MainPageState extends State<MainPage>{
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.cyan[600],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(255, 153, 232, 243),
+        backgroundColor: Color(0xFF052C51),
         showUnselectedLabels: false,
         showSelectedLabels: true,
         elevation: 10,
-        items: const[
+        items: const [
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
@@ -57,8 +59,13 @@ class _MainPageState extends State<MainPage>{
             icon: Icon(Icons.person_search),
           ),
         ],
+        selectedLabelStyle: TextStyle(
+          fontFamily: 'PT Sans',
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontFamily: 'PT Sans',
+        ),
       ),
     );
   }
-
 }

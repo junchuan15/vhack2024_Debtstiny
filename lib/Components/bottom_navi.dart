@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class bottom_nav extends StatefulWidget{
-  const bottom_nav({super.key});
+class bottom_navi extends StatefulWidget{
+  const bottom_navi({super.key});
   @override
-  State<bottom_nav> createState() => BottomNavBar();
+  State<bottom_navi> createState() => BottomNavBar();
 }
 
-class BottomNavBar extends State<bottom_nav>{
+class BottomNavBar extends State<bottom_navi>{
   int _currentIndex = 0;
   List<Widget> body = const[
     Icon(Icons.home),
@@ -22,7 +21,7 @@ class BottomNavBar extends State<bottom_nav>{
         child: body[_currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF052C51),
         currentIndex: _currentIndex,
         onTap: (int newIndex){
           setState(() {

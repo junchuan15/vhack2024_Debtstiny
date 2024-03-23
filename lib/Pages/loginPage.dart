@@ -1,5 +1,5 @@
-import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/text_field.dart';
 
@@ -7,9 +7,9 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signUserIn() {}
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -34,10 +34,10 @@ class LoginPage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                     border: Border.all(
-                            color: Colors.grey, 
-                            width: 2,
-                          ),
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(60),
                         topRight: Radius.circular(60))),
@@ -57,6 +57,7 @@ class LoginPage extends StatelessWidget {
                                 'Sign In',
                                 style: TextStyle(
                                   color: Color(0xFF052C51),
+                                  fontFamily: 'PT Sans',
                                   fontSize: 40,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -102,7 +103,7 @@ class LoginPage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MainPage(),
+                                    builder: (context) => BtmNaviController(),
                                   ),
                                 );
                               },
