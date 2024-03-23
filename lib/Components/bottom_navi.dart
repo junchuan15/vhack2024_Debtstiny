@@ -21,7 +21,7 @@ class BottomNavBar extends State<bottom_navi>{
         child: body[_currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF052C51),
         currentIndex: _currentIndex,
         onTap: (int newIndex){
           setState(() {

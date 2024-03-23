@@ -14,7 +14,7 @@ class BtmNaviController extends StatefulWidget {
 }
 
 class _BtmNaviControllerState extends State<BtmNaviController> {
-  List pages =  [
+  List pages = [
     HomePage(),
     PlanPage(),
     BudgetPage(),
@@ -35,8 +35,9 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.cyan[600],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(255, 153, 232, 243),
+        backgroundColor: Color(0xFF052C51),
         showUnselectedLabels: false,
         showSelectedLabels: true,
         elevation: 10,
@@ -58,6 +59,12 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
             icon: Icon(Icons.person_search),
           ),
         ],
+        selectedLabelStyle: TextStyle(
+          fontFamily: 'PT Sans',
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontFamily: 'PT Sans',
+        ),
       ),
     );
   }
