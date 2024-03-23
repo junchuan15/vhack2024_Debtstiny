@@ -4,6 +4,8 @@ class Button extends StatelessWidget {
   final Function()? onTap;
   final String title;
   final double width;
+  final String title;
+  final double width;
 
   const Button({
     Key? key,
@@ -25,9 +27,12 @@ class Button extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
+        child: Center(
           child: Text(
             title,
+            title,
             style: TextStyle(
+              fontFamily: 'PT Sans',
               fontFamily: 'PT Sans',
               color: Colors.white,
               fontWeight: FontWeight.bold,

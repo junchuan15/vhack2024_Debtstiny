@@ -17,14 +17,14 @@ class TopBackBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: onBack ?? () => Navigator.of(context).pop(),
-        color: Colors.white, 
+        color: Colors.white,
       ),
       title: Text(
         title,
         style: TextStyle(
           fontFamily: 'PT Sans',
           fontWeight: FontWeight.bold,
-          color: Colors.white, 
+          color: Colors.white,
         ),
       ),
     );
