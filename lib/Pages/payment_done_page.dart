@@ -2,7 +2,7 @@ import 'package:debtstiny/Pages/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../Components/top_backBar.dart';
+import '../Components/top_backBar.dart';
 import 'main_page.dart';
 
 class PaymentDonePage extends StatelessWidget {

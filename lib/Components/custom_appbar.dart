@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -16,7 +15,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         iconSize: 30,
         color: Colors.white,
         onPressed: () {
-          // Handle menu icon onPressed event
         },
         icon: const Icon(Icons.menu),
       ),
@@ -26,11 +24,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           iconSize: 40,
           icon: const Icon(Icons.account_circle),
           onPressed: () {
-            // Handle account icon onPressed event
           },
         )
       ],
-      backgroundColor: Color.fromRGBO(21, 44, 81, 1),
+      backgroundColor: Color(0xFF052C51),
       title: secondIcon,
       titleSpacing: -10,
     );

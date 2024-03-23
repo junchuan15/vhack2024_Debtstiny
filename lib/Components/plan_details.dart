@@ -74,7 +74,7 @@ class PlanDetails extends StatelessWidget {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
                         Color.fromRGBO(21, 44, 81, 1)),
-                  ), 
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,

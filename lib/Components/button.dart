@@ -18,11 +18,11 @@ class Button extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width,
-        padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.all(13),
+        margin: const EdgeInsets.symmetric(horizontal: 3),
         decoration: BoxDecoration(
           color: Color(0xFF152C51),
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
           child: Text(
@@ -39,3 +39,4 @@ class Button extends StatelessWidget {
     );
   }
 }
+
