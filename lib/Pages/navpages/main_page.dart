@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:debtstiny/Pages/navpages/consult_page.dart';
 import 'package:debtstiny/Pages/navpages/budget_page.dart';
 import 'package:debtstiny/Pages/navpages/home_page.dart';
@@ -6,36 +7,44 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  final int index;
+  final double budget;
+  const MainPage({super.key,
+  required this.index,
+  required this.budget});
 
   @override
   State<StatefulWidget> createState() {
-    return _MainPageState();
+    return _MainPageState(index);
   }
 }
 
 class _MainPageState extends State<MainPage>{
-  List pages = const[
-    HomePage(),
-    PlanPage(),
-    BudgetPage(),
-    ConsultPage(),
-  ];
-  int currentIndex = 0;
+  int currentIndex; // Declare currentIndex as a member variable
+
+  _MainPageState(this.currentIndex); // Constructor to initialize currentIndex
   void onTap(int index){
     setState(() {
       currentIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
+    double budget = widget.budget;
+    List pages = [
+      HomePage(),
+      PlanPage(),
+      BudgetPage(budget: budget,),
+      ConsultPage(),
+    ];
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.cyan[600],
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.cyan[100],
         showUnselectedLabels: false,
         showSelectedLabels: true,
         elevation: 10,
@@ -43,18 +52,22 @@ class _MainPageState extends State<MainPage>{
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
+            backgroundColor: Color(0xFF052C51),
           ),
           BottomNavigationBarItem(
             label: 'Plan',
             icon: Icon(Icons.content_paste_search),
+            backgroundColor: Color(0xFF052C51),
           ),
           BottomNavigationBarItem(
             label: 'Budget',
             icon: Icon(Icons.wallet),
+            backgroundColor: Color(0xFF052C51),
           ),
           BottomNavigationBarItem(
             label: 'Consultation',
             icon: Icon(Icons.person_search),
+            backgroundColor: Color(0xFF052C51),
           ),
         ],
       ),

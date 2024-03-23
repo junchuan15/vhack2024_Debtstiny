@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double budget = 1500;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: MainPage(index: 0,budget: budget,),
     );
   }
 }
