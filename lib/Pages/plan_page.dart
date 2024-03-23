@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:intl/intl.dart';
 
-import '../plan.dart';
+import 'plan.dart';
 
 class PlanPage extends StatelessWidget {
   const PlanPage({super.key});

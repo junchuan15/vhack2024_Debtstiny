@@ -4,7 +4,7 @@ import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:intl/intl.dart';
 
-import '../Pages/navpages/main_page.dart';
+import '../Pages/main_page.dart';
 import '../Pages/plan.dart';
 
 class PlanDetails extends StatelessWidget {

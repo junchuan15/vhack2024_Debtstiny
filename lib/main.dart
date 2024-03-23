@@ -1,9 +1,7 @@
-import 'package:debtstiny/Pages/navpages/payment_page.dart';
-import 'package:debtstiny/Pages/navpages/plan_page.dart';
 import 'package:flutter/material.dart';
-import 'package:debtstiny/Pages/login_page.dart';
 
-import 'Pages/navpages/main_page.dart';
+import 'Pages/plan_page.dart';
+
 
 void main() {
   runApp(const MyApp());

@@ -1,7 +1,8 @@
-import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/text_field.dart';
+
+import 'main_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

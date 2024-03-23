@@ -1,9 +1,10 @@
-import 'package:debtstiny/Pages/navpages/consult_page.dart';
-import 'package:debtstiny/Pages/navpages/budget_page.dart';
-import 'package:debtstiny/Pages/navpages/home_page.dart';
-import 'package:debtstiny/Pages/navpages/plan_page.dart';
+import 'package:debtstiny/Pages/home_page.dart';
+import 'package:debtstiny/Pages/plan_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'budget_page.dart';
+import 'consult_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
