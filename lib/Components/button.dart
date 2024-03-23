@@ -9,7 +9,7 @@ class Button extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.title,
-    required this.width, 
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class Button extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: width, 
+        width: width,
         padding: const EdgeInsets.all(13),
         margin: const EdgeInsets.symmetric(horizontal: 3),
         decoration: BoxDecoration(
