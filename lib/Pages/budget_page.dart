@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'budget/budget_daily.dart';
 import 'budget/budget_monthly.dart';
 import 'budget/expenses.dart';
-import 'main_page.dart';
 
 class BudgetPage extends StatefulWidget {
   //final double budget;
@@ -180,11 +179,7 @@ class BudgetPageState extends State<BudgetPage>
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainPage(
-                          index: 2,
-                          budget: amount,
-                          expense: BudgetPage.expenses,
-                        ),
+                        builder: (context) => BudgetPage()
                       ),
                     );
                   },
