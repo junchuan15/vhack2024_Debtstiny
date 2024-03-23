@@ -1,4 +1,5 @@
 import 'package:debtstiny/Components/custom_appbar.dart';
+import 'package:debtstiny/Pages/navpages/budget/expenses.dart';
 import 'package:debtstiny/Pages/navpages/consult_page.dart';
 import 'package:debtstiny/Pages/navpages/budget_page.dart';
 import 'package:debtstiny/Pages/navpages/home_page.dart';
@@ -9,9 +10,12 @@ import 'package:flutter/material.dart';
 class MainPage extends StatefulWidget {
   final int index;
   final double budget;
+  final List<Expense> expense;
+
   const MainPage({super.key,
   required this.index,
-  required this.budget});
+  required this.budget,
+  required this.expense});
 
   @override
   State<StatefulWidget> createState() {
@@ -35,7 +39,7 @@ class _MainPageState extends State<MainPage>{
     List pages = [
       HomePage(),
       PlanPage(),
-      BudgetPage(budget: budget,),
+      BudgetPage(budget: budget,expenses: widget.expense,),
       ConsultPage(),
     ];
     return Scaffold(

@@ -2,14 +2,17 @@ import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:debtstiny/Components/title_bar.dart';
 import 'package:debtstiny/Pages/navpages/budget/budget_daily.dart';
 import 'package:debtstiny/Pages/navpages/budget/budget_monthly.dart';
+import 'package:debtstiny/Pages/navpages/budget/expenses.dart';
 import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BudgetPage extends StatefulWidget {
   final double budget;
+  final List<Expense> expenses;
   const BudgetPage({super.key,
-  required this.budget});
+  required this.budget,
+  required this.expenses});
 
   @override
   State<StatefulWidget> createState() {
@@ -102,6 +105,7 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
           children: [
             BudgetDaily(
               budget: widget.budget,
+              expenses: widget.expenses,
             ),
             BudgetMonthly(),
           ],
@@ -151,7 +155,7 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainPage(index: 2,budget: amount,),
+                        builder: (context) => MainPage(index: 2,budget: amount,expense: widget.expenses,),
                       ),
                     );
                   },

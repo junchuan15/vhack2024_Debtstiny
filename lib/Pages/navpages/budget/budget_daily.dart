@@ -2,16 +2,20 @@ import 'dart:math';
 
 import 'package:debtstiny/Pages/navpages/budget/daily_component.dart';
 import 'package:debtstiny/Pages/navpages/budget/expenses.dart';
+import 'package:debtstiny/Pages/navpages/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class BudgetDaily extends StatefulWidget {
   final double budget;
+  final List<Expense> expenses;
 
   const BudgetDaily({
     Key? key,
     required this.budget,
+    required this.expenses,
   }) : super(key: key);
 
 
@@ -29,12 +33,7 @@ class BudgetDailyPage extends State<BudgetDaily>{
 
   @override
   void initState() {
-    Expense e1 = Expense(category: ExpenseCategory.Food, description: 'Lunch', amount: 20, date: DateTime.parse('2024-03-17 10:30:00'));
-    Expense e2 = Expense(category: ExpenseCategory.Transportation, description: 'Grab', amount: 15, date: DateTime.parse('2024-03-20 10:30:00'));
-    Expense e3 = Expense(category: ExpenseCategory.Utilities, description: 'Electric', amount: 60, date: DateTime.parse('2024-03-17 10:30:00'));
-    Expense e4 = Expense(category: ExpenseCategory.Food, description: 'Dinner', amount: 24, date: DateTime.parse('2024-02-17 10:30:00'));
-    Expense e5 = Expense(category: ExpenseCategory.Others, description: 'Clothes', amount: 100, date: DateTime.parse('2024-02-18 10:30:00'));
-    expenses = [e1, e2, e3, e4, e5];
+    expenses = widget.expenses;
     super.initState();
   }
   @override
@@ -191,18 +190,21 @@ class BudgetDailyPage extends State<BudgetDaily>{
   void _showAddExpenseDialog(BuildContext context) {
     ExpenseCategory selectedCategory = ExpenseCategory.Food;
     DateTime? selectedDate; // Declare selectedDate variable
-    final TextEditingController categoryController = TextEditingController();
+    final TextEditingController amountController = TextEditingController();
     final TextEditingController descriptionController = TextEditingController();
+    double amount = 0;
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text('Add Expense',
-              style: TextStyle(
-                fontFamily: ('PT Sans'),
-              ),),
+              title: Text(
+                'Add Expense',
+                style: TextStyle(
+                  fontFamily: 'PT Sans',
+                ),
+              ),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -211,7 +213,8 @@ class BudgetDailyPage extends State<BudgetDaily>{
                       'Selected Date: ${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}',
                       style: TextStyle(
                         fontSize: 16,
-                        fontFamily: ('PT Sans'),),
+                        fontFamily: 'PT Sans',
+                      ),
                     ),
                   ElevatedButton(
                     onPressed: () async {
@@ -227,10 +230,12 @@ class BudgetDailyPage extends State<BudgetDaily>{
                         });
                       }
                     },
-                    child: Text('Select Date',
-                    style: TextStyle(
-                        fontFamily: ('PT Sans'),
-                    ),),
+                    child: Text(
+                      'Select Date',
+                      style: TextStyle(
+                        fontFamily: 'PT Sans',
+                      ),
+                    ),
                   ),
                   DropdownButtonFormField<ExpenseCategory>(
                     value: selectedCategory,
@@ -244,18 +249,37 @@ class BudgetDailyPage extends State<BudgetDaily>{
                     items: ExpenseCategory.values.map((category) {
                       return DropdownMenuItem<ExpenseCategory>(
                         value: category,
-                        child: Text(category.toString().split('.').last,
-                        style: TextStyle(
-                          fontFamily: ('PT Sans'),),),
+                        child: Text(
+                          category.toString().split('.').last,
+                          style: TextStyle(
+                            fontFamily: 'PT Sans',
+                          ),
+                        ),
                       );
                     }).toList(),
-                    decoration: InputDecoration(labelText: 'Category',),
+                    decoration: InputDecoration(labelText: 'Category'),
                   ),
                   TextField(
+                    controller: amountController,
                     decoration: InputDecoration(labelText: 'Amount'),
                     keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                    ],
+                    onChanged: (value) {
+                      // Try parsing the input string into a double
+                      double? parsedAmount = double.tryParse(value);
+                      if (parsedAmount != null) {
+                        // If parsing is successful, update the amount variable
+                        amount = parsedAmount;
+                      } else {
+                        // If parsing fails, set amount to 0.0 or handle the error accordingly
+                        amount = 0.0;
+                      }
+                    },
                   ),
                   TextField(
+                    controller: descriptionController,
                     decoration: InputDecoration(labelText: 'Description'),
                     maxLines: null,
                   ),
@@ -266,22 +290,43 @@ class BudgetDailyPage extends State<BudgetDaily>{
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Cancel',
-                  style: TextStyle(fontFamily: ('PT Sans'),),),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(fontFamily: 'PT Sans'),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Add your logic to save the expense
-                    // For example:
-                    // var date = selectedDate;
-                    // var category = selectedCategory;
-                    // var amount = double.parse(amountController.text);
-                    // var description = descriptionController.text;
-                    // Then save this data to your expense list or database
-                    Navigator.of(context).pop();
+                    // Get values from controllers
+                    String description = descriptionController.text;
+
+                    // Check if date, category, amount, and description are not null
+                    if (selectedDate != null && amount != null && description.isNotEmpty) {
+                      // Create Expense object
+                      Expense newExpense = Expense(
+                        category: selectedCategory,
+                        description: description,
+                        amount: amount,
+                        date: selectedDate!,
+                      );
+                      expenses.add(newExpense);
+
+                      // Close the dialog
+                      Navigator.of(context).pop();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainPage(index: 2,budget: widget.budget,expense: expenses,),
+                        ),
+                      );
+                    } else {
+                      // Show an error message or handle the case where fields are empty
+                    }
                   },
-                  child: Text('Save',
-                  style: TextStyle(fontFamily: ('PT Sans'),),),
+                  child: Text(
+                    'Save',
+                    style: TextStyle(fontFamily: 'PT Sans'),
+                  ),
                 ),
               ],
             );
