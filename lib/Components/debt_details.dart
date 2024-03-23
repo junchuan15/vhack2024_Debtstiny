@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../Pages/debt.dart';
+import '../Components/debt.dart';
 
 class DebtDetails extends StatelessWidget {
   final Debt debt;

@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                 height: 180,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFF052C51),
+                  color: Color(0xFF152C51),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

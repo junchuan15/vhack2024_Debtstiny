@@ -29,7 +29,7 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
   }
 
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     List pages = [
       HomePage(),
       PlanPage(),
@@ -42,34 +42,35 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.cyan[300],
+        unselectedItemColor: Colors.cyan[200],
         showUnselectedLabels: false,
         showSelectedLabels: true,
         elevation: 10,
-        items: const[
+        items: const [
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home),
-            backgroundColor: Color(0xFF052C51),
+            backgroundColor: Color(0xFF152C51),
           ),
           BottomNavigationBarItem(
             label: 'Plan',
             icon: Icon(Icons.content_paste_search),
-            backgroundColor: Color(0xFF052C51),
+            backgroundColor: Color(0xFF152C51),
           ),
           BottomNavigationBarItem(
             label: 'Budget',
             icon: Icon(Icons.wallet),
-            backgroundColor: Color(0xFF052C51),
+            backgroundColor: Color(0xFF152C51),
           ),
           BottomNavigationBarItem(
             label: 'Consultation',
             icon: Icon(Icons.person_search),
-            backgroundColor: Color(0xFF052C51),
+            backgroundColor: Color(0xFF152C51),
           ),
         ],
+        selectedLabelStyle: TextStyle(fontFamily: 'PT Sans'),
+        unselectedLabelStyle: TextStyle(fontFamily: 'PT Sans'),
       ),
     );
   }
-
 }

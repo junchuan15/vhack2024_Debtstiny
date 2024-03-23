@@ -1,4 +1,4 @@
-import 'debt.dart';
+import '../Components/debt.dart';
 
 class Plan {
   final double duration;

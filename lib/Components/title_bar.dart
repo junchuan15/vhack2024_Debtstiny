@@ -11,9 +11,9 @@ class TitleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(21, 44, 81, 1),
+      color: Color(0xFF152C51),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+      padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
       child: Text(
         text,
         style: TextStyle(

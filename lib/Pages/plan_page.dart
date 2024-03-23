@@ -1,54 +1,61 @@
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/title_bar.dart';
-import 'package:debtstiny/Pages/debt.dart';
+import 'package:debtstiny/Components/debt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
+import 'package:debtstiny/Components/plan.dart';
 import 'package:intl/intl.dart';
-
-import '../plan.dart';
 
 class PlanPage extends StatelessWidget {
   const PlanPage({super.key});
 
   static List<Debt> debtList = [
     Debt(
-        image_url: 'lib/Images/RHB.png',
-        creditor: 'RHB Personal Banking',
-        type: 'Personal Loan',
-        balance: 18300.55,
-        APR: 7.19,
-        duration: 24,
-        paid_off_date: DateTime(2025, 11, 15),
-        monthly_payment: 817.34),
+      image_url: 'lib/Images/RHB.png',
+      creditor: 'RHB Personal Banking',
+      type: 'Personal Loan',
+      balance: 18300.55,
+      APR: 7.19,
+      duration: 24,
+      paid_off_date: DateTime(2025, 11, 15),
+      monthly_payment: 817.34,
+      progress: 0.57,
+    ),
     Debt(
-        image_url: 'lib/Images/maybank.png',
-        creditor: 'Maybank Berhad',
-        type: 'Housing Loan',
-        balance: 150000,
-        APR: 4.35,
-        duration: 180,
-        paid_off_date: DateTime(2039, 3, 15),
-        monthly_payment: 920.74),
+      image_url: 'lib/Images/maybank.png',
+      creditor: 'Maybank Berhad',
+      type: 'Housing Loan',
+      balance: 150000,
+      APR: 4.35,
+      duration: 180,
+      paid_off_date: DateTime(2039, 3, 15),
+      monthly_payment: 920.74,
+      progress: 0.29,
+    ),
     Debt(
-        image_url: 'lib/Images/CIMB.png',
-        creditor: 'CIMB Bank Berhad',
-        type: 'Car Loan',
-        balance: 75800,
-        APR: 2.85,
-        duration: 132,
-        paid_off_date: DateTime(2035, 3, 15),
-        monthly_payment: 590.61),
+      image_url: 'lib/Images/CIMB.png',
+      creditor: 'CIMB Bank Berhad',
+      type: 'Car Loan',
+      balance: 75800,
+      APR: 2.85,
+      duration: 132,
+      paid_off_date: DateTime(2035, 3, 15),
+      monthly_payment: 590.61,
+      progress: 0.83,
+    ),
     Debt(
-        image_url: 'lib/Images/PTPTN.png',
-        creditor: 'Perbadanan Tabung Pendidikan Tinggi Nasional',
-        type: 'Educational Loan',
-        balance: 6700,
-        APR: 1,
-        duration: 24,
-        paid_off_date: DateTime(2026, 3, 15),
-        monthly_payment: 281.96)
+      image_url: 'lib/Images/PTPTN.png',
+      creditor: 'PTPTN',
+      type: 'Educational Loan',
+      balance: 6700,
+      APR: 1,
+      duration: 24,
+      paid_off_date: DateTime(2026, 3, 15),
+      monthly_payment: 281.96,
+      progress: 0.69,
+    )
   ];
 
   static Plan plan1 = Plan(
@@ -93,22 +100,22 @@ class PlanPage extends StatelessWidget {
           TitleBar(text: 'Select a repayment plan'),
           Container(
             color: Color(0xFFF3FCF7),
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(15.0),
             // Adjust padding as needed
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Card(
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                     elevation: 6,
                     color: Colors.white,
                     surfaceTintColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.grey,width: 2),
+                      side: BorderSide(color: Colors.grey, width: 2),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -127,7 +134,9 @@ class PlanPage extends StatelessWidget {
                   'Recommended Plan',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 SinglePlan(
                   plan: plan1,
                 ),
