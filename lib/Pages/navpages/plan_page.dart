@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/title_bar.dart';
 import 'package:debtstiny/Pages/debt.dart';
@@ -69,6 +67,14 @@ class PlanPage extends StatelessWidget {
       monthly_payment: 3015.24,
       total: 401500.00);
 
+  static Plan plan3 = Plan(
+      duration: 17,
+      paidOffDate: '15 Mar 2041',
+      debtList: [debtList[2], debtList[1], debtList[3], debtList[0]],
+      interest: 91562.00,
+      monthly_payment: 2894.72,
+      total: 36425.78);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,21 +91,53 @@ class PlanPage extends StatelessWidget {
       body: Column(
         children: [
           TitleBar(text: 'Select a repayment plan'),
-          Expanded(
-            child: Container(
-              color: Color(0xFFF3FCF7),
-              padding: EdgeInsets.all(20.0),
-              // Adjust padding as needed
-              child: Column(
-                children: [
-                  SinglePlan(
-                    plan: plan1,
-                  ),
-                  SinglePlan(
-                    plan: plan2,
-                  ),
-                ],
-              ),
+          Container(
+            color: Color(0xFFF3FCF7),
+            padding: EdgeInsets.all(20.0),
+            // Adjust padding as needed
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Card(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                    elevation: 6,
+                    color: Colors.white,
+                    surfaceTintColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.grey,width: 2),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Current Plan',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SinglePlan(
+                            plan: plan1,
+                          ),
+                        ],
+                      ),
+                    )),
+                Text(
+                  'Recommended Plan',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 5,),
+                SinglePlan(
+                  plan: plan1,
+                ),
+                SinglePlan(
+                  plan: plan2,
+                ),
+                SinglePlan(
+                  plan: plan3,
+                ),
+              ],
             ),
           ),
         ],
