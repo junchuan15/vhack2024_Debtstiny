@@ -66,6 +66,7 @@ flutter:
           weight: 700
   assets:
         - lib/Images/Scoin.webp
+        - lib/Images/logo-s.png
         - lib/Images/RHB.png
         - lib/Images/maybank.png
         - lib/Images/CIMB.png
@@ -106,3 +107,5 @@ flutter:
         - lib/Images/advisor3.jpg
         - lib/Images/online.png
         - lib/Images/in-person.png
+        - lib/Images/pay_done.png
+        - lib/Images/creditcard.png

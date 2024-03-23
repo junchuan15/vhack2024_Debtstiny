@@ -4,7 +4,7 @@ import 'package:debtstiny/Components/debt.dart';
 import 'package:debtstiny/Components/debt_progress.dart';
 import 'package:debtstiny/Controller/debt_display.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
-import 'package:debtstiny/Pages/pay_page.dart';
+import 'package:debtstiny/Pages/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -236,7 +236,7 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => PayPage(),
+                                  builder: (context) => PaymentPage(),
                                 ),
                               );
                             },
