@@ -63,6 +63,8 @@ flutter:
     - lib/Images/maybank.png
     - lib/Images/CIMB.png
     - lib/Images/PTPTN.png
+    - lib/Images/creditcard.png
+    - lib/Images/pay_done.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
