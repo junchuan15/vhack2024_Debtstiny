@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-class ButtonLong extends StatelessWidget {
+class Button extends StatelessWidget {
   final Function()? onTap;
   final String title;
+  final double width;
 
-  const ButtonLong({Key? key, required this.onTap, required this.title}) : super(key: key);
+  const Button({
+    Key? key,
+    required this.onTap,
+    required this.title,
+    required this.width, 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: width, 
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
@@ -32,3 +39,4 @@ class ButtonLong extends StatelessWidget {
     );
   }
 }
+

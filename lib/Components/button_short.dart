@@ -4,7 +4,8 @@ class ButtonShort extends StatelessWidget {
   final Function()? onTap;
   final String title;
 
-  const ButtonShort({Key? key, required this.onTap, required this.title}) : super(key: key);
+  const ButtonShort({Key? key, required this.onTap, required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

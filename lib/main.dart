@@ -1,4 +1,6 @@
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
+import 'package:debtstiny/Pages/loginPage.dart';
 import 'package:debtstiny/Pages/score_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RedeemTabController(),
+      home: LoginPage(),
     );
   }
 }

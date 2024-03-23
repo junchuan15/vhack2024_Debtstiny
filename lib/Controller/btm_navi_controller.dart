@@ -14,7 +14,7 @@ class BtmNaviController extends StatefulWidget {
 }
 
 class _BtmNaviControllerState extends State<BtmNaviController> {
-  List pages = const [
+  List pages =  [
     HomePage(),
     PlanPage(),
     BudgetPage(),
