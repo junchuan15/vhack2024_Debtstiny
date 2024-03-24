@@ -28,7 +28,7 @@ class BudgetDaily extends StatefulWidget {
 
 class BudgetDailyPage extends State<BudgetDaily>{
   DateTime? selectedDate;
-  late List<Expense> expenses;
+  late List<Expense> expenses = [];
   late List<List<Expense>> groupedExpenses = [];
 
   @override
@@ -39,8 +39,6 @@ class BudgetDailyPage extends State<BudgetDaily>{
   @override
   Widget build(BuildContext context) {
     double budget = widget.budget;
-    double totalExpenses = getTotalExpenses();
-    double balance = budget - totalExpenses;
     // Sort expenses by date
     expenses.sort((a, b) => b.date.compareTo(a.date));
     // Function to check if two dates are on the same day
@@ -69,6 +67,9 @@ class BudgetDailyPage extends State<BudgetDaily>{
     if (tempGroup.isNotEmpty) {
       groupedExpenses.add(List.from(tempGroup));
     }
+
+    double totalExpenses = getTotalExpenses();
+    double balance = budget - totalExpenses;
 
     return Scaffold(
       body: Container(

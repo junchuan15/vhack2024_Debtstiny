@@ -21,10 +21,12 @@ class BudgetPage extends StatefulWidget {
 }
 
 class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMixin{
+  late List<Expense> expenses = [];
   late TabController tabController;
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    expenses = widget.expenses;
     super.initState();
   }
   @override
@@ -105,9 +107,9 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
           children: [
             BudgetDaily(
               budget: widget.budget,
-              expenses: widget.expenses,
+              expenses: expenses,
             ),
-            BudgetMonthly(),
+            BudgetMonthly(expenses: expenses,),
           ],
           controller: tabController,
         )
@@ -155,7 +157,7 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainPage(index: 2,budget: amount,expense: widget.expenses,),
+                        builder: (context) => MainPage(index: 2,budget: amount,expense: expenses,),
                       ),
                     );
                   },
