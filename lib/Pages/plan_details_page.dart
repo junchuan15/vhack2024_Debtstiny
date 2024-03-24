@@ -4,12 +4,12 @@ import 'package:debtstiny/Components/debt_details.dart';
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:intl/intl.dart';
-import 'plan.dart';
+import '../Components/plan.dart';
 
-class PlanDetails extends StatelessWidget {
+class PlanDetailsPage extends StatelessWidget {
   final Plan plan;
 
-  const PlanDetails({
+  const PlanDetailsPage({
     Key? key,
     required this.plan,
   }) : super(key: key);
@@ -90,6 +90,7 @@ class PlanDetails extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 18,
                       fontFamily: 'PT Sans',
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

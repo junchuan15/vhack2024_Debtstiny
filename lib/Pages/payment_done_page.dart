@@ -44,6 +44,7 @@ class PaymentDonePage extends StatelessWidget {
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF33363F),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 20.0),
@@ -53,6 +54,7 @@ class PaymentDonePage extends StatelessWidget {
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 20.0),
@@ -61,6 +63,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -69,6 +72,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -77,6 +81,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -85,6 +90,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 50.0),
@@ -106,7 +112,11 @@ class PaymentDonePage extends StatelessWidget {
                 },
                 child: Text(
                   'Confirm',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'PT Sans',
+                  ),
                 ),
               ),
             ],

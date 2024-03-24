@@ -20,6 +20,7 @@ class TitleBar extends StatelessWidget {
           fontSize: 24,
           color: Colors.white,
           fontWeight: FontWeight.bold,
+          fontFamily: 'PT Sans',
         ),
       ),
     );

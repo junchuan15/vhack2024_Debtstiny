@@ -122,7 +122,10 @@ class PlanPage extends StatelessWidget {
                           Text(
                             'Current Plan',
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'PT Sans',
+                            ),
                           ),
                           SinglePlan(
                             plan: plan1,
@@ -132,7 +135,11 @@ class PlanPage extends StatelessWidget {
                     )),
                 Text(
                   'Recommended Plan',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'PT Sans',
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -167,11 +174,14 @@ class PlanPage extends StatelessWidget {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
-              titlePadding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+              titlePadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Customize your plan'),
+                  Text(
+                    'Customize your plan',
+                    style: TextStyle(fontSize: 24, fontFamily: 'PT Sans'),
+                  ),
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).pop(); // Close the dialog
@@ -187,8 +197,11 @@ class PlanPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text('Plan Preference',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'PT Sans',
+                      )),
                   SizedBox(height: 8), // Add spacing
                   RadioListTile<String>(
                     contentPadding: EdgeInsets.all(0),
@@ -196,7 +209,10 @@ class PlanPage extends StatelessWidget {
                       children: [
                         Icon(Icons.access_time), // Clock icon
                         SizedBox(width: 8), // Add spacing
-                        Text('Shortest time'),
+                        Text(
+                          'Shortest time',
+                          style: TextStyle(fontFamily: 'PT Sans'),
+                        ),
                       ],
                     ),
                     value: 'Shortest time',
@@ -213,7 +229,10 @@ class PlanPage extends StatelessWidget {
                       children: [
                         Icon(Icons.attach_money), // Money icon
                         SizedBox(width: 8), // Add spacing
-                        Text('Lowest interest'),
+                        Text(
+                          'Lowest interest',
+                          style: TextStyle(fontFamily: 'PT Sans'),
+                        ),
                       ],
                     ),
                     value: 'Lowest interest',
@@ -227,15 +246,21 @@ class PlanPage extends StatelessWidget {
                   SizedBox(height: 16), // Add spacing
                   Text(
                       'Min Monthly Payment: RM ${formatter.format(minMonthlyPayment)}',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'PT Sans')),
                   SizedBox(height: 8), // Add spacing
-                  Text('Set Maximum Monthly Payment: ',
-                      style: TextStyle(fontSize: 16)),
+                  Text(
+                    'Set Maximum Monthly Payment: ',
+                    style: TextStyle(fontSize: 16, fontFamily: 'PT Sans'),
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('RM ', style: TextStyle(fontSize: 16)),
+                      Text('RM ',
+                          style:
+                              TextStyle(fontSize: 16, fontFamily: 'PT Sans')),
                       SizedBox(width: 8), // Add spacing
                       Expanded(
                         child: TextField(
@@ -244,6 +269,7 @@ class PlanPage extends StatelessWidget {
                           },
                           decoration: InputDecoration(
                             hintText: 'Enter amount',
+                            hintStyle: TextStyle(fontFamily: 'PT Sans'),
                           ),
                         ),
                       ),
@@ -268,7 +294,8 @@ class PlanPage extends StatelessWidget {
                           },
                           child: Text(
                             'Save',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: Colors.white, fontFamily: 'PT Sans'),
                           ),
                         ),
                       ],
