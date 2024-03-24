@@ -56,7 +56,7 @@ class PlanDetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total Monthly Payment',
+                      'Total',
                       style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
