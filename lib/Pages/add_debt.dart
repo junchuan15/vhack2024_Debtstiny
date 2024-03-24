@@ -21,7 +21,6 @@ class AddDebt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat formatter = NumberFormat('#,##0.00', 'en_US');
 
     return Scaffold(
       appBar: TopBackBar(

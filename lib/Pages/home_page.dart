@@ -1,7 +1,5 @@
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
-import 'package:debtstiny/Components/debt.dart';
-import 'package:debtstiny/Components/debt_progress.dart';
 import 'package:debtstiny/Controller/debt_display.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
 import 'package:debtstiny/Pages/add_debt.dart';
