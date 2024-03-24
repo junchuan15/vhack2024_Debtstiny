@@ -16,7 +16,7 @@ Debtstiny is a mobile application designed using the Flutter framework to empowe
 4. **Budgeting Tools:** 💳 The app includes budgeting tools to help users record their daily expenses, set monthly budgets, and monitor their financial planning to avoid exceeding their set limits.
 5. **Consultation Services:** 💬 Users have access to consultation services from financial professionals to receive personalized advice and guidance on debt management and financial planning.
 
-##Installation:
+## Installation:
 1. Clone the repository: git clone https://github.com/junchuan15/vhack2024_Debtstiny.git
 2. Install dependencies: cd debtstiny && flutter pub get
 3. Run the app: flutter run on main.dart
