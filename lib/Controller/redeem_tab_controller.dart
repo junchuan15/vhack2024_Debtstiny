@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Pages/redeem_food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Components/home_backBar.dart';
@@ -7,7 +8,12 @@ import 'package:debtstiny/Pages/redeem_daily_page.dart';
 import 'package:debtstiny/Pages/redeem_voucher_page.dart';
 
 class RedeemTabController extends StatefulWidget {
-  const RedeemTabController({Key? key}) : super(key: key);
+  final User user;
+
+  const RedeemTabController({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   _RedeemTabControllerState createState() => _RedeemTabControllerState();
@@ -35,17 +41,18 @@ class _RedeemTabControllerState extends State<RedeemTabController>
       backgroundColor: Color(0xFFF3FCF7),
       appBar: HomeBackBar(
         title: 'Redeem',
+        user: widget.user,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ScoinBox(scoinCount: 993),
-          RedeemProgressBar(),
+          RedeemProgressBar(user: widget.user,),
           SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20), 
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -59,7 +66,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
               controller: _tabController,
               indicator: BoxDecoration(
                 color: Color(0xFF152C51),
-                borderRadius: BorderRadius.circular(20), 
+                borderRadius: BorderRadius.circular(20),
               ),
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xFF152C51),

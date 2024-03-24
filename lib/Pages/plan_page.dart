@@ -1,6 +1,5 @@
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/title_bar.dart';
-import 'package:debtstiny/Components/debt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -8,82 +7,90 @@ import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:debtstiny/Components/plan.dart';
 import 'package:intl/intl.dart';
 
+import '../Components/User.dart';
+import '../Components/debt.dart';
+
 class PlanPage extends StatelessWidget {
-  const PlanPage({super.key});
+  final User user;
 
-  static List<Debt> debtList = [
-    Debt(
-      image_url: 'lib/Images/RHB.png',
-      creditor: 'RHB Personal Banking',
-      type: 'Personal Loan',
-      balance: 18300.55,
-      APR: 7.19,
-      duration: 24,
-      paid_off_date: DateTime(2025, 11, 15),
-      monthly_payment: 817.34,
-      progress: 0.57,
-    ),
-    Debt(
-      image_url: 'lib/Images/maybank.png',
-      creditor: 'Maybank Berhad',
-      type: 'Housing Loan',
-      balance: 150000,
-      APR: 4.35,
-      duration: 180,
-      paid_off_date: DateTime(2039, 3, 15),
-      monthly_payment: 920.74,
-      progress: 0.29,
-    ),
-    Debt(
-      image_url: 'lib/Images/CIMB.png',
-      creditor: 'CIMB Bank Berhad',
-      type: 'Car Loan',
-      balance: 75800,
-      APR: 2.85,
-      duration: 132,
-      paid_off_date: DateTime(2035, 3, 15),
-      monthly_payment: 590.61,
-      progress: 0.83,
-    ),
-    Debt(
-      image_url: 'lib/Images/PTPTN.png',
-      creditor: 'PTPTN',
-      type: 'Educational Loan',
-      balance: 6700,
-      APR: 1,
-      duration: 24,
-      paid_off_date: DateTime(2026, 3, 15),
-      monthly_payment: 281.96,
-      progress: 0.69,
-    )
-  ];
+  const PlanPage({
+    super.key,
+    required this.user,
+  });
 
-  static Plan plan1 = Plan(
-      duration: 15,
-      paidOffDate: '15 Mar 2039',
-      debtList: debtList,
-      interest: 73864.34,
-      monthly_payment: 2610.65,
-      total: 308194.69);
-
-  static Plan plan2 = Plan(
-      duration: 18,
-      paidOffDate: '15 Mar 2042',
-      debtList: [debtList[3], debtList[0], debtList[2], debtList[1]],
-      interest: 96148.00,
-      monthly_payment: 3015.24,
-      total: 401500.00);
-
-  static Plan plan3 = Plan(
-      duration: 17,
-      paidOffDate: '15 Mar 2041',
-      debtList: [debtList[2], debtList[1], debtList[3], debtList[0]],
-      interest: 91562.00,
-      monthly_payment: 2894.72,
-      total: 36425.78);
+  // static List<Debt> debtList = [
+  //   Debt(
+  //     image_url: 'lib/Images/RHB.png',
+  //     creditor: 'RHB Personal Banking',
+  //     type: 'Personal Loan',
+  //     balance: 18300.55,
+  //     APR: 7.19,
+  //     duration: 24,
+  //     paid_off_date: DateTime(2025, 11, 15),
+  //     monthly_payment: 817.34,
+  //     progress: 0.57,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/maybank.png',
+  //     creditor: 'Maybank Berhad',
+  //     type: 'Housing Loan',
+  //     balance: 150000,
+  //     APR: 4.35,
+  //     duration: 180,
+  //     paid_off_date: DateTime(2039, 3, 15),
+  //     monthly_payment: 920.74,
+  //     progress: 0.29,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/CIMB.png',
+  //     creditor: 'CIMB Bank Berhad',
+  //     type: 'Car Loan',
+  //     balance: 75800,
+  //     APR: 2.85,
+  //     duration: 132,
+  //     paid_off_date: DateTime(2035, 3, 15),
+  //     monthly_payment: 590.61,
+  //     progress: 0.83,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/PTPTN.png',
+  //     creditor: 'PTPTN',
+  //     type: 'Educational Loan',
+  //     balance: 6700,
+  //     APR: 1,
+  //     duration: 24,
+  //     paid_off_date: DateTime(2026, 3, 15),
+  //     monthly_payment: 281.96,
+  //     progress: 0.69,
+  //   )
+  // ];
 
   @override
   Widget build(BuildContext context) {
+    Plan plan1 = Plan(
+        duration: 15,
+        paidOffDate: '15 Mar 2039',
+        debtList: user.debtList,
+        interest: 73864.34,
+        monthly_payment: 2610.65,
+        total: 308194.69);
+
+    Plan plan2 = Plan(
+        duration: 18,
+        paidOffDate: '15 Mar 2042',
+        debtList: [user.debtList[3], user.debtList[0], user.debtList[2], user.debtList[1]],
+        interest: 96148.00,
+        monthly_payment: 3015.24,
+        total: 401500.00);
+
+    Plan plan3 = Plan(
+        duration: 17,
+        paidOffDate: '15 Mar 2041',
+        debtList: [user.debtList[2], user.debtList[1], user.debtList[3], user.debtList[0]],
+        interest: 91562.00,
+        monthly_payment: 2894.72,
+        total: 36425.78);
+
     return Scaffold(
       appBar: CustomAppBar(
         secondIcon: IconButton(
@@ -128,7 +135,8 @@ class PlanPage extends StatelessWidget {
                             ),
                           ),
                           SinglePlan(
-                            plan: plan1,
+                            plan: user.plan,
+                            user: user,
                           ),
                         ],
                       ),
@@ -146,12 +154,15 @@ class PlanPage extends StatelessWidget {
                 ),
                 SinglePlan(
                   plan: plan1,
+                  user: user,
                 ),
                 SinglePlan(
                   plan: plan2,
+                  user: user,
                 ),
                 SinglePlan(
                   plan: plan3,
+                  user: user,
                 ),
               ],
             ),

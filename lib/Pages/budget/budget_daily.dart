@@ -4,17 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../Components/User.dart';
 import 'daily_component.dart';
 import 'expenses.dart';
 
 class BudgetDaily extends StatefulWidget {
-  final double budget;
-  final List<Expense> expenses;
+  final User user;
 
   const BudgetDaily({
     Key? key,
-    required this.budget,
-    required this.expenses,
+    required this.user
   }) : super(key: key);
 
 
@@ -32,12 +31,12 @@ class BudgetDailyPage extends State<BudgetDaily>{
 
   @override
   void initState() {
-    expenses = widget.expenses;
+    expenses = widget.user.expenses;
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    double budget = widget.budget;
+    double budget = widget.user.budget;
     // Sort expenses by date
     expenses.sort((a, b) => b.date.compareTo(a.date));
     // Function to check if two dates are on the same day
@@ -316,7 +315,7 @@ class BudgetDailyPage extends State<BudgetDaily>{
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BtmNaviController(index: 2),
+                          builder: (context) => BtmNaviController(index: 2, user: widget.user,),
                         ),
                       );
                     } else {

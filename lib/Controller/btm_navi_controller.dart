@@ -4,12 +4,16 @@ import 'package:debtstiny/Pages/budget_page.dart';
 import 'package:debtstiny/Pages/home_page.dart';
 import 'package:debtstiny/Pages/plan_page.dart';
 
+import '../Components/User.dart';
+
 class BtmNaviController extends StatefulWidget {
   final int index;
+  final User user;
 
   const BtmNaviController({
     super.key,
     required this.index,
+    required this.user,
   });
 
   @override
@@ -19,12 +23,6 @@ class BtmNaviController extends StatefulWidget {
 }
 
 class _BtmNaviControllerState extends State<BtmNaviController> {
-  List pages = [
-    HomePage(),
-    PlanPage(),
-    BudgetPage(),
-    ConsultPage(),
-  ];
   int currentIndex;
 
   _BtmNaviControllerState(this.currentIndex);
@@ -37,11 +35,20 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
 
   @override
   Widget build(BuildContext context) {
+    User user = widget.user;
     List pages = [
-      HomePage(),
-      PlanPage(),
-      BudgetPage(),
-      ConsultPage(),
+      HomePage(
+        user: user,
+      ),
+      PlanPage(
+        user: user,
+      ),
+      BudgetPage(
+        user: user,
+      ),
+      ConsultPage(
+        user: user,
+      ),
     ];
     return Scaffold(
       body: pages[currentIndex],

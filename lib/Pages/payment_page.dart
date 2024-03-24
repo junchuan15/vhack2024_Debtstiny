@@ -2,10 +2,14 @@ import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../Components/User.dart';
 import 'payment_done_page.dart';
 
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({Key? key}) : super(key: key);
+  final User user;
+
+  const PaymentPage({super.key,
+    required this.user,});
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -170,7 +174,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PaymentDonePage(),
+                        builder: (context) => PaymentDonePage(user: widget.user,),
                       ),
                     );
                   },

@@ -4,14 +4,17 @@ import 'package:debtstiny/Components/debt_details.dart';
 import 'package:debtstiny/Components/single_plan.dart';
 import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:intl/intl.dart';
+import '../Components/User.dart';
 import '../Components/plan.dart';
 
 class PlanDetailsPage extends StatelessWidget {
   final Plan plan;
+  final User user;
 
   const PlanDetailsPage({
     Key? key,
     required this.plan,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -34,7 +37,7 @@ class PlanDetailsPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index == 0) {
                     // First item is SinglePlan widget
-                    return SinglePlan(plan: plan);
+                    return SinglePlan(plan: plan,user: user,);
                   } else {
                     // Rest of the items are DebtDetails widgets
                     return DebtDetails(debt: plan.debtList[index - 1]);
@@ -77,10 +80,11 @@ class PlanDetailsPage extends StatelessWidget {
                         Color.fromRGBO(21, 44, 81, 1)),
                   ), 
                   onPressed: () {
+                    user.plan=this.plan;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BtmNaviController(index: 0,),
+                        builder: (context) => BtmNaviController(index: 0,user: user,),
                       ),
                     );
                   },

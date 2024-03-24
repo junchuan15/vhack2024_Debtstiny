@@ -1,12 +1,16 @@
 import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:flutter/material.dart';
 
+import 'User.dart';
+
 class HomeBackBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final User user;
 
   const HomeBackBar({
     Key? key,
     required this.title,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -18,7 +22,7 @@ class HomeBackBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => BtmNaviController(index: 0,),
+              builder: (context) => BtmNaviController(index: 0,user: user,),
             ),
           );
         },

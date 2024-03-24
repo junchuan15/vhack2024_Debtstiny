@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Pages/plan_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -5,10 +6,12 @@ import 'plan.dart';
 
 class SinglePlan extends StatelessWidget {
   final Plan plan;
+  final User user;
 
   const SinglePlan({
     Key? key,
     required this.plan,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -21,6 +24,7 @@ class SinglePlan extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => PlanDetailsPage(
             plan: plan,
+            user: user,
           ),
         ));
       },

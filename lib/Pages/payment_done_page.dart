@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../Components/top_backBar.dart';
+import '../Components/User.dart';
 
 class PaymentDonePage extends StatelessWidget {
-  const PaymentDonePage({Key? key}) : super(key: key);
+  final User user;
+
+  const PaymentDonePage({super.key,
+    required this.user,});
 
   static Payment payment = Payment(
       amount: 1800,
@@ -106,7 +110,7 @@ class PaymentDonePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BtmNaviController(index: 0,),
+                      builder: (context) => BtmNaviController(index: 0,user: user,),
                     ),
                   );
                 },

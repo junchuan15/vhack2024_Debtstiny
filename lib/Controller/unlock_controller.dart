@@ -6,8 +6,11 @@ import 'package:debtstiny/Pages/redeem_voucher_page.dart';
 import 'package:debtstiny/Components/home_backBar.dart';
 import 'package:debtstiny/Components/scoinBox.dart';
 
+import '../Components/User.dart';
+
 class UnlockController extends StatefulWidget {
-  const UnlockController({Key? key}) : super(key: key);
+  final User user;
+  const UnlockController({Key? key, required this.user}) : super(key: key);
 
   @override
   _UnlockControllerState createState() => _UnlockControllerState();
@@ -35,6 +38,7 @@ class _UnlockControllerState extends State<UnlockController>
       backgroundColor: Color(0xFFF3FCF7),
       appBar: HomeBackBar(
         title: 'Redeem',
+        user: widget.user,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

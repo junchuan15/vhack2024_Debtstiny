@@ -5,8 +5,12 @@ import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:debtstiny/Pages/score_page.dart';
 import 'package:flutter/material.dart';
 
+import '../Components/User.dart';
+
 class QuizPage extends StatelessWidget {
-  const QuizPage({Key? key}) : super(key: key);
+  final User user;
+  const QuizPage({super.key,
+    required this.user,});
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +124,7 @@ class QuizPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ScorePage(),
+                    builder: (context) => ScorePage(user: user,),
                   ),
                 );
               },

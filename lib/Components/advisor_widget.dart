@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Pages/appointment_page.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ class AdvisorWidget extends StatelessWidget {
   final String title;
   final String description;
   final VoidCallback onPressed;
+  final User user;
 
   const AdvisorWidget({
     Key? key,
@@ -14,6 +16,7 @@ class AdvisorWidget extends StatelessWidget {
     required this.title,
     required this.description,
     required this.onPressed,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -62,7 +65,7 @@ class AdvisorWidget extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => AppointmentPage(),
+                                  builder: (context) => AppointmentPage(user: user,),
                                 ),
                               );
                             },

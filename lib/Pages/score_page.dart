@@ -1,10 +1,13 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Components/button_short.dart';
 import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:debtstiny/Controller/unlock_controller.dart';
 import 'package:flutter/material.dart';
 
 class ScorePage extends StatelessWidget {
-  const ScorePage({Key? key}) : super(key: key);
+  final User user;
+
+  const ScorePage({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +67,9 @@ class ScorePage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          UnlockController(),
+                      builder: (context) => UnlockController(
+                        user: user,
+                      ),
                     ),
                   );
                 },

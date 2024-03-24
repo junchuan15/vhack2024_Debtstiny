@@ -3,34 +3,43 @@ import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../Components/User.dart';
 import 'budget/budget_daily.dart';
 import 'budget/budget_monthly.dart';
 import 'budget/expenses.dart';
 
 class BudgetPage extends StatefulWidget {
-  const BudgetPage({super.key,});
+  final User user;
 
-  static double budget = 1500;
-  static Expense e1 = Expense(category: ExpenseCategory.Food, description: 'Lunch', amount: 20, date: DateTime.parse('2024-03-17 10:30:00'));
-  static Expense e2 = Expense(category: ExpenseCategory.Transportation, description: 'Grab', amount: 15, date: DateTime.parse('2024-03-20 10:30:00'));
-  static Expense e3 = Expense(category: ExpenseCategory.Utilities, description: 'Electric', amount: 60, date: DateTime.parse('2024-03-17 10:30:00'));
-  static Expense e4 = Expense(category: ExpenseCategory.Food, description: 'Dinner', amount: 24, date: DateTime.parse('2024-02-17 10:30:00'));
-  static Expense e5 = Expense(category: ExpenseCategory.Others, description: 'Clothes', amount: 100, date: DateTime.parse('2024-02-18 10:30:00'));
-  static List<Expense> expenses = [e1, e2, e3, e4, e5];
+  const BudgetPage({super.key,
+    required this.user,
+  });
+
+  // static double budget = 1500;
+  // static Expense e1 = Expense(category: ExpenseCategory.Food, description: 'Lunch', amount: 20, date: DateTime.parse('2024-03-17 10:30:00'));
+  // static Expense e2 = Expense(category: ExpenseCategory.Transportation, description: 'Grab', amount: 15, date: DateTime.parse('2024-03-20 10:30:00'));
+  // static Expense e3 = Expense(category: ExpenseCategory.Utilities, description: 'Electric', amount: 60, date: DateTime.parse('2024-03-17 10:30:00'));
+  // static Expense e4 = Expense(category: ExpenseCategory.Food, description: 'Dinner', amount: 24, date: DateTime.parse('2024-02-17 10:30:00'));
+  // static Expense e5 = Expense(category: ExpenseCategory.Others, description: 'Clothes', amount: 100, date: DateTime.parse('2024-02-18 10:30:00'));
+  // static List<Expense> expenses = [e1, e2, e3, e4, e5];
 
   @override
   State<StatefulWidget> createState() {
-    return BudgetPageState();
+    return BudgetPageState(user);
   }
 }
 
 class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMixin{
   late List<Expense> expenses = [];
   late TabController tabController;
+  final User user;
+
+  BudgetPageState(this.user);
+
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
-    expenses = BudgetPage.expenses;
+    expenses = user.expenses;
     super.initState();
   }
   @override
@@ -109,10 +118,7 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
         ),
         body: TabBarView(
           children: [
-            BudgetDaily(
-              budget: BudgetPage.budget,
-              expenses: expenses,
-            ),
+            BudgetDaily(user: user,),
             BudgetMonthly(expenses: expenses,),
           ],
           controller: tabController,
@@ -161,7 +167,7 @@ class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMi
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BtmNaviController(index: 2),
+                        builder: (context) => BtmNaviController(index: 2,user: user,),
                       ),
                     );
                   },

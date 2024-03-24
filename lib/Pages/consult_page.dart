@@ -1,11 +1,15 @@
 import 'package:debtstiny/Components/consult_widget.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:flutter/material.dart';
-    
-class ConsultPage extends StatelessWidget {
 
-  const ConsultPage({ Key? key }) : super(key: key);
-  
+import '../Components/User.dart';
+
+class ConsultPage extends StatelessWidget {
+  final User user;
+
+  const ConsultPage({super.key,
+    required this.user,});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,35 +23,35 @@ class ConsultPage extends StatelessWidget {
           ),
         ),
       ),
-       body: ListView(
+      body: ListView(
         children: [
           ConsultWidget(
             imagePath: 'lib/Images/consult1.png',
             title: "Financial Advice",
             description: "Gain insights into personalised financial planning and guidance from finance expert.",
-            onPressed: () {
-              },
+            onPressed: () {},
+            user: user,
           ),
-           ConsultWidget(
+          ConsultWidget(
             imagePath: 'lib/Images/consult2.png',
             title: "Debt Management",
             description: "Seek advice from an AKPK officer or former DMP debtor about their debt management experience.",
-            onPressed: () {
-            },
+            onPressed: () {},
+            user: user,
           ),
-           ConsultWidget(
+          ConsultWidget(
             imagePath: 'lib/Images/consult3.png',
             title: "Business Planning",
             description: "Businesses or entrepreneurs can seek advice on future business planning from professional experts.",
-            onPressed: () {
-            },
+            onPressed: () {},
+            user: user,
           ),
-           ConsultWidget(
+          ConsultWidget(
             imagePath: 'lib/Images/consult4.png',
             title: "Mental Support",
             description: "Gain encouragement and mental support you need to stay motivated on your journey to financial freedom.",
-            onPressed: () {
-            },
+            onPressed: () {},
+            user: user,
           ),
         ],
 
