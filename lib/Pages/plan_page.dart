@@ -8,6 +8,7 @@ import 'package:debtstiny/Components/plan.dart';
 import 'package:intl/intl.dart';
 
 import '../Components/User.dart';
+import '../Components/debt.dart';
 
 class PlanPage extends StatelessWidget {
   final User user;
@@ -75,16 +76,16 @@ class PlanPage extends StatelessWidget {
         total: 308194.69);
 
     Plan plan2 = Plan(
-        duration: 18,
-        paidOffDate: '15 Mar 2042',
+        duration: 17,
+        paidOffDate: '15 Mar 2041',
         debtList: [user.debtList[3], user.debtList[0], user.debtList[2], user.debtList[1]],
         interest: 96148.00,
         monthly_payment: 3015.24,
         total: 401500.00);
 
     Plan plan3 = Plan(
-        duration: 17,
-        paidOffDate: '15 Mar 2041',
+        duration: 18,
+        paidOffDate: '15 Mar 2042',
         debtList: [user.debtList[2], user.debtList[1], user.debtList[3], user.debtList[0]],
         interest: 91562.00,
         monthly_payment: 2894.72,
