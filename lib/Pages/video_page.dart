@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Components/button_short.dart';
 import 'package:debtstiny/Pages/quiz_page.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,8 @@ import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:debtstiny/Controller/youtube_controller.dart';
 
 class VideoPage extends StatefulWidget {
-  const VideoPage({Key? key}) : super(key: key);
+  final User user;
+  const VideoPage({Key? key,required this.user}) : super(key: key);
 
   @override
   _VideoPageState createState() => _VideoPageState();
@@ -66,7 +68,7 @@ class _VideoPageState extends State<VideoPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const QuizPage(),
+                        builder: (context) => QuizPage(user: widget.user,),
                       ),
                     );
                   },

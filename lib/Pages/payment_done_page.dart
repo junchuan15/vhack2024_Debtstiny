@@ -1,12 +1,16 @@
-import 'package:debtstiny/Entities/payment.dart';
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
+import 'package:debtstiny/Components/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../Components/top_backBar.dart';
-import 'main_page.dart';
+import '../../Components/top_backBar.dart';
+import '../Components/User.dart';
 
 class PaymentDonePage extends StatelessWidget {
-  const PaymentDonePage({Key? key}) : super(key: key);
+  final User user;
+
+  const PaymentDonePage({super.key,
+    required this.user,});
 
   static Payment payment = Payment(
       amount: 1800,
@@ -44,6 +48,7 @@ class PaymentDonePage extends StatelessWidget {
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF33363F),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 20.0),
@@ -53,6 +58,7 @@ class PaymentDonePage extends StatelessWidget {
                   fontSize: 28.0,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 20.0),
@@ -61,6 +67,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -69,6 +76,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -77,6 +85,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 10.0),
@@ -85,6 +94,7 @@ class PaymentDonePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Color(0xFF152C51),
+                  fontFamily: 'PT Sans',
                 ),
               ),
               SizedBox(height: 50.0),
@@ -97,16 +107,26 @@ class PaymentDonePage extends StatelessWidget {
                       Color.fromRGBO(21, 44, 81, 1)),
                 ),
                 onPressed: () {
+                  user.debtProgress.mpaid=payment.amount;
+                  user.debtProgress.paid+=payment.amount;
+                  user.debtProgress.outstanding-=payment.amount;
+                  user.debtProgress.remaining=user.debtProgress.total-user.debtProgress.paid;
+                  user.debtProgress.progress=double.parse((user.debtProgress.paid/user.debtProgress.total).toStringAsFixed(2));
+                  user.debtProgress.scoin+=(payment.amount/100).toInt();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MainPage(),
+                      builder: (context) => BtmNaviController(index: 0,user: user,),
                     ),
                   );
                 },
                 child: Text(
                   'Confirm',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'PT Sans',
+                  ),
                 ),
               ),
             ],

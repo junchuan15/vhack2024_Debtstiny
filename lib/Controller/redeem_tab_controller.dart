@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Pages/redeem_food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Components/home_backBar.dart';
@@ -7,7 +8,12 @@ import 'package:debtstiny/Pages/redeem_daily_page.dart';
 import 'package:debtstiny/Pages/redeem_voucher_page.dart';
 
 class RedeemTabController extends StatefulWidget {
-  const RedeemTabController({Key? key}) : super(key: key);
+  final User user;
+
+  const RedeemTabController({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   _RedeemTabControllerState createState() => _RedeemTabControllerState();
@@ -35,17 +41,18 @@ class _RedeemTabControllerState extends State<RedeemTabController>
       backgroundColor: Color(0xFFF3FCF7),
       appBar: HomeBackBar(
         title: 'Redeem',
+        user: widget.user,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ScoinBox(scoinCount: 993),
-          RedeemProgressBar(),
+          ScoinBox(scoinCount: widget.user.debtProgress.scoin),
+          RedeemProgressBar(user: widget.user,),
           SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20), 
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -54,17 +61,17 @@ class _RedeemTabControllerState extends State<RedeemTabController>
                 ),
               ],
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 20),
+            margin: EdgeInsets.symmetric(horizontal: 20),
             child: TabBar(
               controller: _tabController,
               indicator: BoxDecoration(
                 color: Color(0xFF152C51),
-                borderRadius: BorderRadius.circular(20), 
+                borderRadius: BorderRadius.circular(20),
               ),
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xFF152C51),
               indicatorSize: TabBarIndicatorSize.tab,
-              tabs: const [
+              tabs: [
                 Tab(
                   child: Text(
                     'Food',
@@ -101,10 +108,10 @@ class _RedeemTabControllerState extends State<RedeemTabController>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: const [
-                RedeemFoodPage(),
-                RedeemDailyPage(),
-                RedeemVoucherPage(),
+              children: [
+                RedeemFoodPage(user: widget.user,),
+                RedeemDailyPage(user: widget.user,),
+                RedeemVoucherPage(user: widget.user,),
               ],
             ),
           ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Pages/video_page.dart';
 
+import 'User.dart';
+
 
 class RedeemProgressBar extends StatelessWidget {
-  const RedeemProgressBar({Key? key}) : super(key: key);
+  final User user;
+  const RedeemProgressBar({Key? key,required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,7 @@ class RedeemProgressBar extends StatelessWidget {
       onTap: () {
        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => VideoPage()),
+          MaterialPageRoute(builder: (context) => VideoPage(user: user,)),
         );
       },
       child: Container(

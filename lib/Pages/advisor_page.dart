@@ -1,9 +1,11 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Components/advisor_widget.dart';
 import 'package:debtstiny/Components/home_backBar.dart';
 import 'package:flutter/material.dart';
 
 class AdvisorPage extends StatelessWidget {
-  const AdvisorPage({Key? key}) : super(key: key);
+  final User user;
+  const AdvisorPage({Key? key, required this.user,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +13,7 @@ class AdvisorPage extends StatelessWidget {
       backgroundColor: Color(0xFFF3FCF7),
       appBar: HomeBackBar(
         title: 'Financial Advice',
+        user: user,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
@@ -63,18 +66,21 @@ class AdvisorPage extends StatelessWidget {
             title: "Tan Gwan Tek",
             description: "ABC Company \nFinance Advisor | 5 Years",
             onPressed: () {},
+            user: user,
           ),
           AdvisorWidget(
             imagePath: 'lib/Images/advisor2.jpg',
             title: "Muhammad Irfan",
             description: "Comfy Sdn Bhd \nFinance Analyst | 8 Years",
             onPressed: () {},
+            user: user,
           ),
           AdvisorWidget(
             imagePath: 'lib/Images/advisor3.jpg',
             title: "Siti Faqri",
             description: "AKPK \nFinance Counselor | 4 Years",
             onPressed: () {},
+            user: user,
           ),
         ],
       ),

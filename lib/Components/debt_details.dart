@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../Entities/debt.dart';
+import '../Components/debt.dart';
 
 class DebtDetails extends StatelessWidget {
   final Debt debt;
   final DateFormat dateFormatter = DateFormat('dd MMM yyyy');
+  final TextStyle textStyle = TextStyle(
+    fontFamily: 'PT Sans',
+    fontSize: 12,
+  );
 
   DebtDetails({Key? key, required this.debt}) : super(key: key);
 
@@ -29,6 +33,7 @@ class DebtDetails extends StatelessWidget {
               Text(
                 debt.type,
                 style: TextStyle(
+                  fontFamily: 'PT Sans',
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
@@ -38,15 +43,11 @@ class DebtDetails extends StatelessWidget {
                 children: [
                   Text(
                     'Balance:',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                   Text(
                     'RM ${formatter.format(debt.balance)}',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                 ],
               ),
@@ -55,15 +56,11 @@ class DebtDetails extends StatelessWidget {
                 children: [
                   Text(
                     'APR:',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                   Text(
                     '${debt.APR.toStringAsFixed(2)}%',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                 ],
               ),
@@ -72,15 +69,11 @@ class DebtDetails extends StatelessWidget {
                 children: [
                   Text(
                     'Duration:',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                   Text(
                     '${debt.duration} months',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                 ],
               ),
@@ -89,15 +82,11 @@ class DebtDetails extends StatelessWidget {
                 children: [
                   Text(
                     'Paid off on:',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                   Text(
                     dateFormatter.format(debt.paid_off_date),
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
+                    style: textStyle,
                   ),
                 ],
               ),
@@ -107,6 +96,7 @@ class DebtDetails extends StatelessWidget {
                   Text(
                     'Monthly Payment:',
                     style: TextStyle(
+                      fontFamily: 'PT Sans',
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
@@ -114,6 +104,7 @@ class DebtDetails extends StatelessWidget {
                   Text(
                     'RM ${formatter.format(debt.monthly_payment)}',
                     style: TextStyle(
+                      fontFamily: 'PT Sans',
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),

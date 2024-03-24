@@ -1,74 +1,82 @@
 import 'package:debtstiny/Components/button.dart';
 import 'package:debtstiny/Components/custom_appbar.dart';
-import 'package:debtstiny/Components/debt.dart';
-import 'package:debtstiny/Components/debt_progress.dart';
 import 'package:debtstiny/Controller/debt_display.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
-import 'package:debtstiny/Pages/pay_page.dart';
+import 'package:debtstiny/Pages/add_debt.dart';
+import 'package:debtstiny/Pages/payment_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+import '../Components/User.dart';
 
-  static List<Debt> debtList = [
-    Debt(
-      image_url: 'lib/Images/RHB.png',
-      creditor: 'RHB Personal Banking',
-      type: 'Personal Loan',
-      balance: 18300.55,
-      APR: 7.19,
-      duration: 24,
-      paid_off_date: DateTime(2025, 11, 15),
-      monthly_payment: 817.34,
-      progress: 0.57,
-    ),
-    Debt(
-      image_url: 'lib/Images/maybank.png',
-      creditor: 'Maybank Berhad',
-      type: 'Housing Loan',
-      balance: 150000,
-      APR: 4.35,
-      duration: 180,
-      paid_off_date: DateTime(2039, 3, 15),
-      monthly_payment: 920.74,
-      progress: 0.29,
-    ),
-    Debt(
-      image_url: 'lib/Images/CIMB.png',
-      creditor: 'CIMB Bank Berhad',
-      type: 'Car Loan',
-      balance: 75800,
-      APR: 2.85,
-      duration: 132,
-      paid_off_date: DateTime(2035, 3, 15),
-      monthly_payment: 590.61,
-      progress: 0.83,
-    ),
-    Debt(
-      image_url: 'lib/Images/PTPTN.png',
-      creditor: 'PTPTN',
-      type: 'Educational Loan',
-      balance: 6700,
-      APR: 1,
-      duration: 24,
-      paid_off_date: DateTime(2026, 3, 15),
-      monthly_payment: 281.96,
-      progress: 0.69,
-    )
-  ];
+class HomePage extends StatelessWidget {
+  final User user;
+
+  const HomePage({
+    super.key,
+    required this.user,
+  });
+
+  // static List<Debt> debtList = [
+  //   Debt(
+  //     image_url: 'lib/Images/RHB.png',
+  //     creditor: 'RHB Personal Banking',
+  //     type: 'Personal Loan',
+  //     balance: 18300.55,
+  //     APR: 7.19,
+  //     duration: 24,
+  //     paid_off_date: DateTime(2025, 11, 15),
+  //     monthly_payment: 817.34,
+  //     progress: 0.57,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/maybank.png',
+  //     creditor: 'Maybank Berhad',
+  //     type: 'Housing Loan',
+  //     balance: 150000,
+  //     APR: 4.35,
+  //     duration: 180,
+  //     paid_off_date: DateTime(2039, 3, 15),
+  //     monthly_payment: 920.74,
+  //     progress: 0.29,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/CIMB.png',
+  //     creditor: 'CIMB Bank Berhad',
+  //     type: 'Car Loan',
+  //     balance: 75800,
+  //     APR: 2.85,
+  //     duration: 132,
+  //     paid_off_date: DateTime(2035, 3, 15),
+  //     monthly_payment: 590.61,
+  //     progress: 0.83,
+  //   ),
+  //   Debt(
+  //     image_url: 'lib/Images/PTPTN.png',
+  //     creditor: 'PTPTN',
+  //     type: 'Educational Loan',
+  //     balance: 6700,
+  //     APR: 1,
+  //     duration: 24,
+  //     paid_off_date: DateTime(2026, 3, 15),
+  //     monthly_payment: 281.96,
+  //     progress: 0.69,
+  //   )
+  // ];
 
   @override
   Widget build(BuildContext context) {
-    DebtProgress debtProgress = DebtProgress(
-      remaining: 250800.35,
-      outstanding: 1800.00,
-      progress: 0.28,
-      total: 348300.35,
-      paid: 97500.00,
-      scoin: 975,
-    );
+    NumberFormat formatter = NumberFormat('#,##0.00', 'en_US');
+    // DebtProgress debtProgress = DebtProgress(
+    //   remaining: 250800.35,
+    //   outstanding: 1800.00,
+    //   progress: 0.28,
+    //   total: 348300.35,
+    //   paid: 97500.00,
+    //   scoin: 975,
+    // );
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -83,7 +91,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height:1400,
+          height: 1600,
           width: 500,
           child: Stack(
             children: [
@@ -92,13 +100,13 @@ class HomePage extends StatelessWidget {
                 height: 180,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xFF052C51),
+                  color: Color(0xFF152C51),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Welcome, Jimmy',
+                      'Welcome, ${user.name}',
                       style: TextStyle(
                         fontFamily: 'PT Sans',
                         fontSize: 24,
@@ -162,7 +170,7 @@ class HomePage extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text:
-                                    ' ${debtProgress.remaining.toStringAsFixed(2)}',
+                                    '${formatter.format(user.debtProgress.remaining)}',
                                 style: TextStyle(
                                   fontFamily: 'PT Sans',
                                   fontSize: 34,
@@ -208,7 +216,7 @@ class HomePage extends StatelessWidget {
                                   children: <TextSpan>[
                                     TextSpan(
                                       text:
-                                          '${debtProgress.outstanding.toStringAsFixed(2)}',
+                                          '${formatter.format(user.debtProgress.outstanding)}',
                                       style: TextStyle(
                                         fontFamily: 'PT Sans',
                                         fontSize: 26,
@@ -236,7 +244,9 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => PayPage(),
+                                  builder: (context) => PaymentPage(
+                                    user: user,
+                                  ),
                                 ),
                               );
                             },
@@ -262,7 +272,7 @@ class HomePage extends StatelessWidget {
                           animationDuration: 5000,
                           radius: 100,
                           lineWidth: 18,
-                          percent: 0.28,
+                          percent: user.debtProgress.progress,
                           progressColor: Color(0xFF2B5BA9),
                           backgroundColor: Color(0xFFB6B6B6),
                           circularStrokeCap: CircularStrokeCap.round,
@@ -279,7 +289,7 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${((debtProgress.progress * 100).toStringAsFixed(0)).toString()}%',
+                                '${((user.debtProgress.progress * 100).toStringAsFixed(0)).toString()}%',
                                 style: TextStyle(
                                   fontSize: 40,
                                   fontFamily: 'PT Sans',
@@ -304,7 +314,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'RM ${debtProgress.total.toStringAsFixed(2)}',
+                              'RM ${formatter.format(user.debtProgress.total)}',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PT Sans',
@@ -322,7 +332,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'RM ${debtProgress.paid.toStringAsFixed(2)}',
+                              'RM ${formatter.format(user.debtProgress.paid)}',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PT Sans',
@@ -352,7 +362,7 @@ class HomePage extends StatelessWidget {
                                     ),
                                     SizedBox(width: 10),
                                     Text(
-                                      '${debtProgress.scoin.toString()}',
+                                      '${user.debtProgress.scoin.toString()}',
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontFamily: 'PT Sans',
@@ -372,8 +382,9 @@ class HomePage extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          RedeemTabController(),
+                                      builder: (context) => RedeemTabController(
+                                        user: user,
+                                      ),
                                     ),
                                   );
                                 },
@@ -401,10 +412,20 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Spacer(),
-                            Icon(
-                              Icons.add,
-                              color: Colors.black,
-                              size: 28,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AddDebt(user: user)),
+                                );
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.black,
+                                size: 28,
+                              ),
                             ),
                             SizedBox(width: 20),
                           ],
@@ -412,9 +433,9 @@ class HomePage extends StatelessWidget {
                         ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
-                          itemCount: HomePage.debtList.length,
+                          itemCount: user.debtList.length,
                           itemBuilder: (context, index) {
-                            return DebtDisplay(debt: HomePage.debtList[index]);
+                            return DebtDisplay(debt: user.debtList[index]);
                           },
                         ),
                       ],

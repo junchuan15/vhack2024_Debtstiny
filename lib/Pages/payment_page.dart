@@ -1,10 +1,15 @@
 import 'package:debtstiny/Components/top_backBar.dart';
-import 'package:debtstiny/Pages/payment_done_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../Components/User.dart';
+import 'payment_done_page.dart';
+
 class PaymentPage extends StatefulWidget {
-  const PaymentPage({Key? key}) : super(key: key);
+  final User user;
+
+  const PaymentPage({super.key,
+    required this.user,});
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -34,6 +39,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'PT Sans',
                   ),
                 ),
                 SizedBox(width: 10.0),
@@ -48,7 +54,11 @@ class _PaymentPageState extends State<PaymentPage> {
               ],
             ),
             Text(
-                'Your monthly outstanding balance will automatically be paid via your signed credit card on 1st of the month.'),
+              'Your monthly outstanding balance will automatically be paid via your signed credit card on 1st of the month.',
+              style: TextStyle(
+                fontFamily: 'PT Sans',
+              ),
+            ),
             Card(
               margin: EdgeInsets.symmetric(vertical: 20),
               elevation: 6,
@@ -70,6 +80,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             fontSize: 20.0,
                             color: Color(0xFF33363F),
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'PT Sans',
                           ),
                         ),
                         RichText(
@@ -78,22 +89,32 @@ class _PaymentPageState extends State<PaymentPage> {
                               fontSize: 15.0,
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'PT Sans',
                             ),
                             children: <TextSpan>[
                               TextSpan(
                                 text: 'RM ',
-                                style: TextStyle(fontSize: 24),
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontFamily: 'PT Sans',
+                                ),
                               ),
                               TextSpan(
                                 text: '${formatter.format(1800)}',
-                                style: TextStyle(fontSize: 32),
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontFamily: 'PT Sans',
+                                ),
                               ),
                             ],
                           ),
                         ),
                         Text(
                           dateFormat.format(DateTime.now()),
-                          style: TextStyle(color: Color(0xFF152C51)),
+                          style: TextStyle(
+                            color: Color(0xFF152C51),
+                            fontFamily: 'PT Sans',
+                          ),
                         ),
                       ],
                     ),
@@ -109,6 +130,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       fontSize: 15.0,
                       color: Color(0xFF33363F),
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'PT Sans',
                     )),
                 SizedBox(
                   height: 10,
@@ -119,15 +141,22 @@ class _PaymentPageState extends State<PaymentPage> {
                       fontSize: 15.0,
                       color: Color(0xFF152C51),
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'PT Sans',
                     ),
                     children: <TextSpan>[
                       TextSpan(
                         text: 'RM ',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontFamily: 'PT Sans',
+                        ),
                       ),
                       TextSpan(
                         text: '${formatter.format(1800)}',
-                        style: TextStyle(fontSize: 32),
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontFamily: 'PT Sans',
+                        ),
                       ),
                     ],
                   ),
@@ -145,13 +174,18 @@ class _PaymentPageState extends State<PaymentPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PaymentDonePage(),
+                        builder: (context) => PaymentDonePage(user: widget.user,),
                       ),
                     );
                   },
                   child: Text(
                     'Confirm',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'PT Sans',
+                      fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -166,6 +200,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF33363F),
+                        fontFamily: 'PT Sans',
                       ),
                     ),
                     SizedBox(
@@ -185,6 +220,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF152C51),
+                            fontFamily: 'PT Sans',
                             shadows: [
                               Shadow(
                                 offset:

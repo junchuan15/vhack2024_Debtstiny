@@ -1,7 +1,6 @@
 import 'package:debtstiny/Components/debt.dart';
 import 'package:debtstiny/Pages/debt_view.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class DebtDisplay extends StatelessWidget {
@@ -10,8 +9,6 @@ class DebtDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat formatter=NumberFormat('#,##0.00', 'en_US');
-
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -73,7 +70,7 @@ class DebtDisplay extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Balance: RM ${formatter.format(debt.balance)}',
+                      'Balance: RM ${debt.balance.toStringAsFixed(2)}',
                       style: TextStyle(
                         fontFamily: 'PT Sans',
                         color: Color(0xFF33363F),

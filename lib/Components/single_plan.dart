@@ -1,15 +1,17 @@
-import 'package:debtstiny/Components/plan_details.dart';
+import 'package:debtstiny/Components/User.dart';
+import 'package:debtstiny/Pages/plan_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import '../Entities/plan.dart';
+import 'plan.dart';
 
 class SinglePlan extends StatelessWidget {
   final Plan plan;
+  final User user;
 
   const SinglePlan({
     Key? key,
     required this.plan,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -20,7 +22,10 @@ class SinglePlan extends StatelessWidget {
       onTap: () {
         // Navigate to PlanDetails page when SinglePlan is clicked
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PlanDetails(plan: plan,),
+          builder: (context) => PlanDetailsPage(
+            plan: plan,
+            user: user,
+          ),
         ));
       },
       child: Column(
@@ -28,13 +33,21 @@ class SinglePlan extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
             Text(
               plan.duration.toString() + ' years',
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'PT Sans',
+              ),
             ),
             SizedBox(width: 8),
             // Add spacing between duration and paid-off date
             Text(
               '|',
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w900),
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.w900,
+                fontFamily: 'PT Sans',
+              ),
             ),
             SizedBox(width: 8),
             // Add spacing between duration and paid-off date
@@ -43,12 +56,16 @@ class SinglePlan extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 15.0,
                   color: Colors.black,
+                  fontFamily: 'PT Sans',
                 ),
                 children: <TextSpan>[
                   TextSpan(text: 'Cleared on '),
                   TextSpan(
                       text: plan.paidOffDate,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'PT Sans',
+                      )),
                 ],
               ),
             ),
@@ -66,11 +83,17 @@ class SinglePlan extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Interest: RM ${formatter.format(plan.interest)}',
-                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'PT Sans'),
               ),
               Text(
                 'M.Payment: RM ${formatter.format(plan.monthly_payment)}',
-                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'PT Sans'),
               ),
             ],
           ),
@@ -128,7 +151,7 @@ class BankPathway extends StatelessWidget {
         widgets.add(Icon(
           Icons.arrow_forward_ios_sharp,
           color: Colors.grey[600],
-        )); //Text(' > ', style: TextStyle(fontSize: 24))
+        ));
       }
     }
     return widgets;

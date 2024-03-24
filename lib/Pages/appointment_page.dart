@@ -1,3 +1,4 @@
+import 'package:debtstiny/Components/User.dart';
 import 'package:debtstiny/Components/appointment_widget.dart';
 import 'package:debtstiny/Components/top_backBar.dart';
 import 'package:debtstiny/Pages/advisor_page.dart';
@@ -6,7 +7,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:debtstiny/Components/button.dart';
 
 class AppointmentPage extends StatefulWidget {
-  const AppointmentPage({Key? key}) : super(key: key);
+  final User user;
+  const AppointmentPage({Key? key, required this.user}) : super(key: key);
 
   @override
   _AppointmentPageState createState() => _AppointmentPageState();
@@ -89,7 +91,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AdvisorPage(),
+                  builder: (context) => AdvisorPage(user: widget.user,),
                 ),
               );
             },
