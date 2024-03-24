@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -10,53 +8,56 @@ class PieChart extends StatelessWidget {
   List<Expense> expenses;
   double sum = 0;
 
-  PieChart({Key? key, required this.expenses}) : super(key: key);
+  PieChart({Key? key,
+    required this.expenses}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
     List<PieChartData> chartData = getChartData();
     return SafeArea(
         child: Container(
-      child: SfCircularChart(
-        tooltipBehavior: TooltipBehavior(
-            enable: true,
-            color: Colors.white,
-            textStyle: TextStyle(
-              color: Colors.black,
-              fontFamily: ('PT Sans'),
-            )),
-        series: <CircularSeries>[
-          DoughnutSeries<PieChartData, String>(
-            dataSource: chartData,
-            xValueMapper: (PieChartData data, _) => data.category,
-            yValueMapper: (PieChartData data, _) => data.percent,
-            dataLabelSettings: DataLabelSettings(isVisible: true),
-            enableTooltip: true,
-            pointColorMapper: (PieChartData data, _) {
-              return getCategoryColor(data.category);
-            },
-          )
-        ],
-        annotations: <CircularChartAnnotation>[
-          CircularChartAnnotation(
-            widget: Center(
-              child: Text(
-                'RM ${sum.toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: ('PT Sans'),
-                  fontWeight: FontWeight.bold,
+          child: SfCircularChart(
+            tooltipBehavior: TooltipBehavior(
+                enable: true,
+                color: Colors.white,
+                textStyle: TextStyle(
                   color: Colors.black,
+                  fontFamily: ('PT Sans'),
+                )),
+            series: <CircularSeries>[
+              DoughnutSeries<PieChartData, String>(
+                dataSource: chartData,
+                xValueMapper: (PieChartData data, _) => data.category,
+                yValueMapper: (PieChartData data, _) => data.percent,
+                dataLabelSettings: DataLabelSettings(isVisible: true),
+                enableTooltip: true,
+                pointColorMapper: (PieChartData data, _) {
+                  return getCategoryColor(data.category);
+                },
+              )
+            ],
+            annotations: <CircularChartAnnotation>[
+              CircularChartAnnotation(
+                widget: Center(
+                  child: Text(
+                    'RM ${sum.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: ('PT Sans'),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    ));
+        ));
   }
 
-  List<PieChartData> getChartData() {
+  List<PieChartData> getChartData(){
     Map<ExpenseCategory, double> map = {};
     sum = 0;
     for (Expense expense in expenses) {
@@ -70,14 +71,11 @@ class PieChart extends StatelessWidget {
       sum += expense.amount;
     }
     List<PieChartData> chartData = [];
-    for (ExpenseCategory category in ExpenseCategory.values) {
-      double amount =
-          map[category] ?? 0; // Get the total amount for the category
-      double percent = amount / sum * 100;
-      if (amount > 0) {
-        // Check if amount is greater than 0
-        chartData.add(
-            PieChartData(category.toString().split('.').last, percent.ceil()));
+    for(ExpenseCategory category in ExpenseCategory.values){
+      double amount = map[category] ?? 0; // Get the total amount for the category
+      double percent = amount/sum * 100;
+      if (amount > 0) { // Check if amount is greater than 0
+        chartData.add(PieChartData(category.toString().split('.').last, percent.ceil()));
       }
     }
     return chartData;
@@ -105,9 +103,8 @@ class PieChart extends StatelessWidget {
   }
 }
 
-class PieChartData {
+class PieChartData{
   final String category;
   final int percent;
-
   PieChartData(this.category, this.percent);
 }

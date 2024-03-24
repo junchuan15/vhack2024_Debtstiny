@@ -39,9 +39,9 @@ class MonthlyComponent extends StatelessWidget {
                   ),
                 ),
                 Text('${data.category.toString().split('.').last}',
-                style: TextStyle(
-                    fontFamily: ('PT Sans')
-                ),),
+                  style: TextStyle(
+                      fontFamily: ('PT Sans')
+                  ),),
                 Spacer(),
                 Container(
                   padding: EdgeInsets.all(5),
@@ -56,8 +56,8 @@ class MonthlyComponent extends StatelessWidget {
                 Text('RM ${data.amount.toStringAsFixed(2)}',
                   style: TextStyle(
                       color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: ('PT Sans')
+                      fontWeight: FontWeight.bold,
+                      fontFamily: ('PT Sans')
                   ),)
               ],
             ),

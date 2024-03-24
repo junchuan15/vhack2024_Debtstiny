@@ -42,25 +42,25 @@ class DailyComponent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('${expenses.description}',
-                    style: TextStyle(
-                      fontFamily: ('PT Sans'),
-                      fontSize: 18,
-                    ),),
+                      style: TextStyle(
+                        fontFamily: ('PT Sans'),
+                        fontSize: 18,
+                      ),),
                     Text('${expenses.category.toString().split('.').last}',
-                    style: TextStyle(
-                      color: Colors.grey
-                    ),)
-                ],
-              ),
-              Spacer(),
-              Text('RM ${expenses.amount.toStringAsFixed(2)}',
-                style: TextStyle(
-                    fontFamily: ('PT Sans'),
-                    color: Colors.red
-                ),)
-          ],
-        ),
-      ));
+                      style: TextStyle(
+                          color: Colors.grey
+                      ),)
+                  ],
+                ),
+                Spacer(),
+                Text('RM ${expenses.amount.toStringAsFixed(2)}',
+                  style: TextStyle(
+                      fontFamily: ('PT Sans'),
+                      color: Colors.red
+                  ),)
+              ],
+            ),
+          ));
     }
 
     return Container(
@@ -77,7 +77,7 @@ class DailyComponent extends StatelessWidget {
               padding: EdgeInsets.only(left: 10, bottom: 5),
               height: 40,
               child:Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text('${expenses[0].date.day}',
                       style: TextStyle(

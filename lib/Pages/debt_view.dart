@@ -11,6 +11,8 @@ class DebtView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NumberFormat formatter=NumberFormat('#,##0.00', 'en_US');
+
     return Scaffold(
       backgroundColor: Color(0xFFF3FCF7),
       appBar: TopBackBar(
@@ -66,13 +68,13 @@ class DebtView extends StatelessWidget {
                   _buildDataRow('Creditor', debt.creditor),
                   _buildDataRow('Type', debt.type),
                   _buildDataRow(
-                      'Balance', 'RM ${debt.balance.toStringAsFixed(2)}'),
+                      'Balance', 'RM ${formatter.format(debt.balance)}'),
                   _buildDataRow('APR', '${debt.APR.toStringAsFixed(2)}%'),
                   _buildDataRow('Duration', '${debt.duration} months'),
                   _buildDataRow('Paid Off Date',
                       dateFormatter.format(debt.paid_off_date)),
                   _buildDataRow('Monthly Payment',
-                      'RM ${debt.monthly_payment.toStringAsFixed(2)}'),
+                      'RM ${formatter.format(debt.monthly_payment)}'),
                   _buildDataRow('Progress',
                       '${(debt.progress * 100).toStringAsFixed(2)}%'),
                 ],

@@ -6,6 +6,7 @@ import 'package:debtstiny/Controller/debt_display.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
 import 'package:debtstiny/Pages/payment_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -61,6 +62,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NumberFormat formatter = NumberFormat('#,##0.00', 'en_US');
     DebtProgress debtProgress = DebtProgress(
       remaining: 250800.35,
       outstanding: 1800.00,
@@ -162,7 +164,7 @@ class HomePage extends StatelessWidget {
                             children: <TextSpan>[
                               TextSpan(
                                 text:
-                                    ' ${debtProgress.remaining.toStringAsFixed(2)}',
+                                    '${formatter.format(debtProgress.remaining)}',
                                 style: TextStyle(
                                   fontFamily: 'PT Sans',
                                   fontSize: 34,
@@ -208,7 +210,7 @@ class HomePage extends StatelessWidget {
                                   children: <TextSpan>[
                                     TextSpan(
                                       text:
-                                          '${debtProgress.outstanding.toStringAsFixed(2)}',
+                                          '${formatter.format(debtProgress.outstanding)}',
                                       style: TextStyle(
                                         fontFamily: 'PT Sans',
                                         fontSize: 26,
@@ -304,7 +306,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'RM ${debtProgress.total.toStringAsFixed(2)}',
+                              'RM ${formatter.format(debtProgress.total)}',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PT Sans',
@@ -322,7 +324,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'RM ${debtProgress.paid.toStringAsFixed(2)}',
+                              'RM ${formatter.format(debtProgress.paid)}',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'PT Sans',

@@ -18,7 +18,7 @@ class HomeBackBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => BtmNaviController(),
+              builder: (context) => BtmNaviController(index: 0,),
             ),
           );
         },

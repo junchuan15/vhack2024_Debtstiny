@@ -7,7 +7,9 @@ import 'expenses.dart';
 import 'monthly_component.dart';
 
 class BudgetMonthly extends StatefulWidget {
-  const BudgetMonthly({super.key});
+  final List<Expense> expenses;
+  const BudgetMonthly({super.key,
+    required this.expenses});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,15 +21,14 @@ class BudgetMonthlyPage extends State<BudgetMonthly>{
   int currentYear = DateTime.now().year;
   int selectedYear = DateTime.now().year;
   int selectedMonth = DateTime.now().month;
+  late List<Expense> expenses = [];
+  @override
+  void initState() {
+    expenses = widget.expenses;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    Expense e1 = Expense(category: ExpenseCategory.Food, description: 'Lunch', amount: 20, date: DateTime.parse('2024-03-17 10:30:00'));
-    Expense e2 = Expense(category: ExpenseCategory.Transportation, description: 'Grab', amount: 15, date: DateTime.parse('2024-03-20 10:30:00'));
-    Expense e3 = Expense(category: ExpenseCategory.Utilities, description: 'Electric', amount: 60, date: DateTime.parse('2024-03-17 10:30:00'));
-    Expense e4 = Expense(category: ExpenseCategory.Food, description: 'Dinner', amount: 24, date: DateTime.parse('2024-02-17 10:30:00'));
-    Expense e5 = Expense(category: ExpenseCategory.Others, description: 'Clothes', amount: 100, date: DateTime.parse('2024-02-18 10:30:00'));
-    List<Expense> expenses = [e1, e2, e3, e4, e5];
-
     List<String> months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
@@ -96,7 +97,7 @@ class BudgetMonthlyPage extends State<BudgetMonthly>{
                       return DropdownMenuItem<int>(
                         value: index + 1,
                         child: Text(months[index],
-                        style: TextStyle(fontFamily: ('PT Sans'),),),
+                          style: TextStyle(fontFamily: ('PT Sans'),),),
                       );
                     }),
                     underline: Container( // remove underline
@@ -133,5 +134,4 @@ class BudgetMonthlyPage extends State<BudgetMonthly>{
     });
   }
 }
-
 

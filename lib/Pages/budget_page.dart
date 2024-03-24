@@ -1,5 +1,5 @@
-import 'package:debtstiny/Components/custom_appbar.dart';
 import 'package:debtstiny/Components/title_bar.dart';
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,14 +8,7 @@ import 'budget/budget_monthly.dart';
 import 'budget/expenses.dart';
 
 class BudgetPage extends StatefulWidget {
-  //final double budget;
-  //final List<Expense> expenses;
-
-  const BudgetPage({
-    super.key,
-    //required this.budget,
-    //required this.expenses,
-  });
+  const BudgetPage({super.key,});
 
   static double budget = 1500;
   static Expense e1 = Expense(category: ExpenseCategory.Food, description: 'Lunch', amount: 20, date: DateTime.parse('2024-03-17 10:30:00'));
@@ -31,22 +24,20 @@ class BudgetPage extends StatefulWidget {
   }
 }
 
-class BudgetPageState extends State<BudgetPage>
-    with SingleTickerProviderStateMixin {
+class BudgetPageState extends State<BudgetPage> with SingleTickerProviderStateMixin{
+  late List<Expense> expenses = [];
   late TabController tabController;
-
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    expenses = BudgetPage.expenses;
     super.initState();
   }
-
   @override
   void dispose() {
     tabController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,54 +73,51 @@ class BudgetPageState extends State<BudgetPage>
             preferredSize: Size.fromHeight(kToolbarHeight + 40),
             child: Container(
                 child: Column(
-              children: [
-                TitleBar(text: 'Manage your expenses'),
-                Container(
-                  color: Colors.white,
-                  child: TabBar(
-                    indicatorColor: Colors.cyan[700],
-                    // Indicator color remains white
-                    unselectedLabelColor: Colors.grey[400],
-                    // Change unselected label color to grey or any other contrasting color
-                    labelColor: Colors.black,
-                    // Change selected label color to white
-                    tabs: [
-                      Tab(
-                        child: Text(
-                          'Daily',
-                          style: TextStyle(
-                              fontFamily: ('PT Sans'),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
+                  children: [
+                    TitleBar(text: 'Manage your expenses'),
+                    Container(
+                      color: Colors.white,
+                      child: TabBar(
+                        indicatorColor: Colors.cyan[700], // Indicator color remains white
+                        unselectedLabelColor: Colors.grey[400], // Change unselected label color to grey or any other contrasting color
+                        labelColor: Colors.black, // Change selected label color to white
+                        tabs: [
+                          Tab(
+                            child: Text('Daily',
+                              style: TextStyle(
+                                  fontFamily: ('PT Sans'),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                              ),),
+                          ),
+                          Tab(
+                            child: Text('Monthly',
+                              style: TextStyle(
+                                  fontFamily: ('PT Sans'),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18
+                              ),),
+                          ),
+                        ],
+                        controller: tabController,
                       ),
-                      Tab(
-                        child: Text(
-                          'Monthly',
-                          style: TextStyle(
-                              fontFamily: ('PT Sans'),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                      ),
-                    ],
-                    controller: tabController,
-                  ),
+                    )
+                  ],
                 )
-              ],
-            )),
+            ),
           ),
         ),
         body: TabBarView(
           children: [
             BudgetDaily(
               budget: BudgetPage.budget,
-              expenses: BudgetPage.expenses,
+              expenses: expenses,
             ),
-            BudgetMonthly(),
+            BudgetMonthly(expenses: expenses,),
           ],
           controller: tabController,
-        ));
+        )
+    );
   }
 
   void _showSetBudgetDialog(BuildContext context) {
@@ -140,12 +128,10 @@ class BudgetPageState extends State<BudgetPage>
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text(
-                'Set Budget',
+              title: Text('Set Budget',
                 style: TextStyle(
                   fontFamily: ('PT Sans'),
-                ),
-              ),
+                ),),
               content: TextField(
                 decoration: InputDecoration(labelText: 'Amount'),
                 keyboardType: TextInputType.number,
@@ -166,12 +152,8 @@ class BudgetPageState extends State<BudgetPage>
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(
-                      fontFamily: ('PT Sans'),
-                    ),
-                  ),
+                  child: Text('Cancel',
+                    style: TextStyle(fontFamily: ('PT Sans'),),),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -179,16 +161,12 @@ class BudgetPageState extends State<BudgetPage>
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BudgetPage()
+                        builder: (context) => BtmNaviController(index: 2),
                       ),
                     );
                   },
-                  child: Text(
-                    'Save',
-                    style: TextStyle(
-                      fontFamily: ('PT Sans'),
-                    ),
-                  ),
+                  child: Text('Save',
+                    style: TextStyle(fontFamily: ('PT Sans'),),),
                 ),
               ],
             );

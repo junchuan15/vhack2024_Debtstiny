@@ -103,7 +103,7 @@ class LoginPage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BtmNaviController(),
+                                    builder: (context) => BtmNaviController(index: 0,),
                                   ),
                                 );
                               },

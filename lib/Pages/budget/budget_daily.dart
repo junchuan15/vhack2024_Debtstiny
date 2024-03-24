@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'package:debtstiny/Pages/budget_page.dart';
+import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,15 +17,17 @@ class BudgetDaily extends StatefulWidget {
     required this.expenses,
   }) : super(key: key);
 
+
   @override
   State<StatefulWidget> createState() {
     return BudgetDailyPage();
   }
+
 }
 
-class BudgetDailyPage extends State<BudgetDaily> {
+class BudgetDailyPage extends State<BudgetDaily>{
   DateTime? selectedDate;
-  late List<Expense> expenses;
+  late List<Expense> expenses = [];
   late List<List<Expense>> groupedExpenses = [];
 
   @override
@@ -35,35 +35,27 @@ class BudgetDailyPage extends State<BudgetDaily> {
     expenses = widget.expenses;
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     double budget = widget.budget;
-    double totalExpenses = getTotalExpenses();
-    double balance = budget - totalExpenses;
     // Sort expenses by date
     expenses.sort((a, b) => b.date.compareTo(a.date));
     // Function to check if two dates are on the same day
     bool isSameDay(DateTime date1, DateTime date2) {
-      return date1.year == date2.year &&
-          date1.month == date2.month &&
-          date1.day == date2.day;
+      return date1.year == date2.year && date1.month == date2.month && date1.day == date2.day;
     }
-
     // Group expenses by date
     groupedExpenses = [];
     DateTime? tempDate;
     List<Expense> tempGroup = [];
     for (Expense expense in expenses) {
-      if (expense.date.year != DateTime.now().year ||
-          expense.date.month != DateTime.now().month) {
+      if(expense.date.year != DateTime.now().year || expense.date.month != DateTime.now().month) {
         continue;
       }
       if (tempDate == null || !isSameDay(expense.date, tempDate)) {
         // Start a new group
         if (tempGroup.isNotEmpty) {
-          groupedExpenses.add(List.from(
-              tempGroup)); // Add the previous group to groupedExpenses
+          groupedExpenses.add(List.from(tempGroup)); // Add the previous group to groupedExpenses
           tempGroup.clear(); // Clear tempGroup for a new group
         }
         tempDate = expense.date; // Update tempDate
@@ -75,6 +67,9 @@ class BudgetDailyPage extends State<BudgetDaily> {
       groupedExpenses.add(List.from(tempGroup));
     }
 
+    double totalExpenses = getTotalExpenses();
+    double balance = budget - totalExpenses;
+
     return Scaffold(
       body: Container(
         color: Color(0xFFF3FCF7),
@@ -82,15 +77,14 @@ class BudgetDailyPage extends State<BudgetDaily> {
           children: [
             Container(
               color: Colors.white,
-              child: Row(
+              child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        const Text(
-                          'Budget',
+                        const Text('Budget',
                           style: TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 16,
@@ -98,14 +92,12 @@ class BudgetDailyPage extends State<BudgetDaily> {
                             color: Colors.black,
                           ),
                         ),
-                        Text(
-                          "RM${budget.toStringAsFixed(2)}",
+                        Text("RM${budget.toStringAsFixed(2)}",
                           style: const TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 18,
                             color: Colors.green,
-                          ),
-                        )
+                          ),)
                       ],
                     ),
                   ),
@@ -113,8 +105,7 @@ class BudgetDailyPage extends State<BudgetDaily> {
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text(
-                          'Expenses',
+                        Text('Expenses',
                           style: TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 16,
@@ -122,14 +113,12 @@ class BudgetDailyPage extends State<BudgetDaily> {
                             color: Colors.black,
                           ),
                         ),
-                        Text(
-                          "RM${totalExpenses.toStringAsFixed(2)}",
+                        Text("RM${totalExpenses.toStringAsFixed(2)}",
                           style: TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 18,
                             color: Colors.red,
-                          ),
-                        )
+                          ),)
                       ],
                     ),
                   ),
@@ -137,8 +126,7 @@ class BudgetDailyPage extends State<BudgetDaily> {
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text(
-                          'Balance',
+                        Text('Balance',
                           style: TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 16,
@@ -146,14 +134,12 @@ class BudgetDailyPage extends State<BudgetDaily> {
                             color: Colors.black,
                           ),
                         ),
-                        Text(
-                          "RM${balance.toStringAsFixed(2)}",
+                        Text("RM${balance.toStringAsFixed(2)}",
                           style: TextStyle(
                             fontFamily: 'PT Sans',
                             fontSize: 18,
                             color: Colors.black,
-                          ),
-                        )
+                          ),)
                       ],
                     ),
                   )
@@ -168,9 +154,10 @@ class BudgetDailyPage extends State<BudgetDaily> {
             Expanded(
                 child: ListView.builder(
                     itemCount: groupedExpenses.length,
-                    itemBuilder: (context, index) {
+                    itemBuilder: (context, index){
                       return DailyComponent(expenses: groupedExpenses[index]);
-                    })),
+                    })
+            ),
           ],
         ),
       ),
@@ -183,18 +170,17 @@ class BudgetDailyPage extends State<BudgetDaily> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.white,
-        ),
+          color: Colors.white,),
         backgroundColor: Colors.blueGrey,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
-  double getTotalExpenses() {
+  double getTotalExpenses(){
     double total = 0;
-    for (List<Expense> expenses in groupedExpenses) {
-      for (Expense expense in expenses) {
+    for(List<Expense> expenses in groupedExpenses){
+      for(Expense expense in expenses){
         total += expense.amount;
       }
     }
@@ -278,8 +264,7 @@ class BudgetDailyPage extends State<BudgetDaily> {
                     decoration: InputDecoration(labelText: 'Amount'),
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.allow(
-                          RegExp(r'^\d+\.?\d{0,2}')),
+                      FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
                     ],
                     onChanged: (value) {
                       // Try parsing the input string into a double
@@ -316,9 +301,7 @@ class BudgetDailyPage extends State<BudgetDaily> {
                     String description = descriptionController.text;
 
                     // Check if date, category, amount, and description are not null
-                    if (selectedDate != null &&
-                        amount != null &&
-                        description.isNotEmpty) {
+                    if (selectedDate != null && amount != null && description.isNotEmpty) {
                       // Create Expense object
                       Expense newExpense = Expense(
                         category: selectedCategory,
@@ -332,7 +315,9 @@ class BudgetDailyPage extends State<BudgetDaily> {
                       Navigator.of(context).pop();
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => BudgetPage()),
+                        MaterialPageRoute(
+                          builder: (context) => BtmNaviController(index: 2),
+                        ),
                       );
                     } else {
                       // Show an error message or handle the case where fields are empty

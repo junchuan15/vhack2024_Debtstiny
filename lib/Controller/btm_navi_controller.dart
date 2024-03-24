@@ -5,11 +5,16 @@ import 'package:debtstiny/Pages/home_page.dart';
 import 'package:debtstiny/Pages/plan_page.dart';
 
 class BtmNaviController extends StatefulWidget {
-  const BtmNaviController({Key? key});
+  final int index;
+
+  const BtmNaviController({
+    super.key,
+    required this.index,
+  });
 
   @override
   State<StatefulWidget> createState() {
-    return _BtmNaviControllerState();
+    return _BtmNaviControllerState(index);
   }
 }
 
@@ -20,7 +25,9 @@ class _BtmNaviControllerState extends State<BtmNaviController> {
     BudgetPage(),
     ConsultPage(),
   ];
-  int currentIndex = 0;
+  int currentIndex;
+
+  _BtmNaviControllerState(this.currentIndex);
 
   void onTap(int index) {
     setState(() {
