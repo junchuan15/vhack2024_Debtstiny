@@ -46,7 +46,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ScoinBox(scoinCount: 993),
+          ScoinBox(scoinCount: widget.user.debtProgress.scoin),
           RedeemProgressBar(user: widget.user,),
           SizedBox(height: 20),
           Container(
@@ -61,7 +61,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
                 ),
               ],
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 20),
+            margin: EdgeInsets.symmetric(horizontal: 20),
             child: TabBar(
               controller: _tabController,
               indicator: BoxDecoration(
@@ -71,7 +71,7 @@ class _RedeemTabControllerState extends State<RedeemTabController>
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xFF152C51),
               indicatorSize: TabBarIndicatorSize.tab,
-              tabs: const [
+              tabs: [
                 Tab(
                   child: Text(
                     'Food',
@@ -108,10 +108,10 @@ class _RedeemTabControllerState extends State<RedeemTabController>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: const [
-                RedeemFoodPage(),
-                RedeemDailyPage(),
-                RedeemVoucherPage(),
+              children: [
+                RedeemFoodPage(user: widget.user,),
+                RedeemDailyPage(user: widget.user,),
+                RedeemVoucherPage(user: widget.user,),
               ],
             ),
           ),

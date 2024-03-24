@@ -1,6 +1,6 @@
+import 'package:debtstiny/Pages/redeem_food_page.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Components/unlockProgressBar.dart';
-import 'package:debtstiny/Pages/redeem_unlock.dart';
 import 'package:debtstiny/Pages/redeem_daily_page.dart';
 import 'package:debtstiny/Pages/redeem_voucher_page.dart';
 import 'package:debtstiny/Components/home_backBar.dart';
@@ -10,7 +10,11 @@ import '../Components/User.dart';
 
 class UnlockController extends StatefulWidget {
   final User user;
-  const UnlockController({Key? key, required this.user}) : super(key: key);
+
+  const UnlockController({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   _UnlockControllerState createState() => _UnlockControllerState();
@@ -43,7 +47,7 @@ class _UnlockControllerState extends State<UnlockController>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ScoinBox(scoinCount: 993),
+          ScoinBox(scoinCount: widget.user.debtProgress.scoin),
           UnlockProgressBar(),
           SizedBox(height: 20),
           Container(
@@ -68,10 +72,10 @@ class _UnlockControllerState extends State<UnlockController>
               labelColor: Colors.white,
               unselectedLabelColor: Color(0xFF152C51),
               indicatorSize: TabBarIndicatorSize.tab,
-              tabs: const [
+              tabs: [
                 Tab(
                   child: Text(
-                    'Unlock',
+                    'Food',
                     style: TextStyle(
                       fontFamily: 'PT Sans',
                       fontSize: 18,
@@ -105,10 +109,10 @@ class _UnlockControllerState extends State<UnlockController>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: const [
-                RedeemUnlock(),
-                RedeemDailyPage(),
-                RedeemVoucherPage(),
+              children: [
+                RedeemFoodPage(user: widget.user),
+                RedeemDailyPage(user: widget.user),
+                RedeemVoucherPage(user: widget.user),
               ],
             ),
           ),

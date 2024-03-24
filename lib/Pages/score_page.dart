@@ -64,6 +64,7 @@ class ScorePage extends StatelessWidget {
               SizedBox(height: 70.0),
               ButtonShort(
                 onTap: () {
+                  user.milestone+=1;
                   Navigator.push(
                     context,
                     MaterialPageRoute(
