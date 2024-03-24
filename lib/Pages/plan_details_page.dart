@@ -81,6 +81,10 @@ class PlanDetailsPage extends StatelessWidget {
                   ), 
                   onPressed: () {
                     user.plan=this.plan;
+                    user.debtProgress.total=this.plan.total;
+                    user.debtProgress.outstanding=plan.monthly_payment-user.debtProgress.mpaid;
+                    user.debtProgress.remaining=user.debtProgress.total-user.debtProgress.paid;
+                    user.debtProgress.progress=double.parse((user.debtProgress.paid/user.debtProgress.total).toStringAsFixed(2));
                     Navigator.push(
                       context,
                       MaterialPageRoute(

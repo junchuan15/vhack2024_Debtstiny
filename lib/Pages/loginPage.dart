@@ -1,4 +1,6 @@
 import 'package:debtstiny/Components/User.dart';
+import 'package:debtstiny/Pages/register_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:debtstiny/Controller/btm_navi_controller.dart';
 import 'package:debtstiny/Components/button.dart';
@@ -24,6 +26,7 @@ class LoginPage extends StatelessWidget {
         debtProgress: DebtProgress(
           remaining: 250800.35,
           outstanding: 1800.00,
+          mpaid: 0.00,
           progress: 0.28,
           total: 348300.35,
           paid: 97500.00,
@@ -209,7 +212,7 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 15),
+                            SizedBox(height: 10),
                             Text(
                               'Welcome back! Nice to see you again.',
                               style: TextStyle(
@@ -259,7 +262,7 @@ class LoginPage extends StatelessWidget {
                               title: 'Login',
                               width: 300,
                             ),
-                            SizedBox(height: 50),
+                            SizedBox(height: 40),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 25.0),
@@ -296,12 +299,22 @@ class LoginPage extends StatelessWidget {
                                   style: TextStyle(color: Colors.grey[700]),
                                 ),
                                 SizedBox(width: 4),
-                                Text(
-                                  'Register now',
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xFF052C51),
-                                    fontWeight: FontWeight.bold,
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => RegisterPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    'Register now',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xFF052C51),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ],

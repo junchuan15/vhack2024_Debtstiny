@@ -4,6 +4,7 @@ import 'package:debtstiny/Components/debt.dart';
 import 'package:debtstiny/Components/debt_progress.dart';
 import 'package:debtstiny/Controller/debt_display.dart';
 import 'package:debtstiny/Controller/redeem_tab_controller.dart';
+import 'package:debtstiny/Pages/add_debt.dart';
 import 'package:debtstiny/Pages/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +16,8 @@ import '../Components/User.dart';
 class HomePage extends StatelessWidget {
   final User user;
 
-  const HomePage({super.key,
+  const HomePage({
+    super.key,
     required this.user,
   });
 
@@ -91,7 +93,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height:1400,
+          height: 1600,
           width: 500,
           child: Stack(
             children: [
@@ -244,7 +246,9 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => PaymentPage(user: user,),
+                                  builder: (context) => PaymentPage(
+                                    user: user,
+                                  ),
                                 ),
                               );
                             },
@@ -270,7 +274,7 @@ class HomePage extends StatelessWidget {
                           animationDuration: 5000,
                           radius: 100,
                           lineWidth: 18,
-                          percent: 0.28,
+                          percent: user.debtProgress.progress,
                           progressColor: Color(0xFF2B5BA9),
                           backgroundColor: Color(0xFFB6B6B6),
                           circularStrokeCap: CircularStrokeCap.round,
@@ -380,8 +384,9 @@ class HomePage extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          RedeemTabController(user: user,),
+                                      builder: (context) => RedeemTabController(
+                                        user: user,
+                                      ),
                                     ),
                                   );
                                 },
@@ -409,10 +414,20 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Spacer(),
-                            Icon(
-                              Icons.add,
-                              color: Colors.black,
-                              size: 28,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AddDebt(user: user)),
+                                );
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.black,
+                                size: 28,
+                              ),
                             ),
                             SizedBox(width: 20),
                           ],
