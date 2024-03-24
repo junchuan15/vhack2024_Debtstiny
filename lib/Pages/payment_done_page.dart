@@ -107,6 +107,12 @@ class PaymentDonePage extends StatelessWidget {
                       Color.fromRGBO(21, 44, 81, 1)),
                 ),
                 onPressed: () {
+                  user.debtProgress.mpaid=payment.amount;
+                  user.debtProgress.paid+=payment.amount;
+                  user.debtProgress.outstanding-=payment.amount;
+                  user.debtProgress.remaining=user.debtProgress.total-user.debtProgress.paid;
+                  user.debtProgress.progress=double.parse((user.debtProgress.paid/user.debtProgress.total).toStringAsFixed(2));
+                  user.debtProgress.scoin+=(payment.amount/100).toInt();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

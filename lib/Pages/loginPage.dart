@@ -157,7 +157,9 @@ class LoginPage extends StatelessWidget {
               description: 'Clothes',
               amount: 100,
               date: DateTime.parse('2024-02-18 10:30:00')),
-        ]);
+        ],
+    milestone: 0,
+    );
 
     return Scaffold(
       body: Container(

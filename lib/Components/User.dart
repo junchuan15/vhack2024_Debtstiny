@@ -13,6 +13,7 @@ class User {
   List<Debt> _debtList;
   double _budget;
   List<Expense> _expenses;
+  int _milestone;
 
   User({
     required String name,
@@ -23,6 +24,7 @@ class User {
     required List<Debt> debtList,
     required double budget,
     required List<Expense> expenses,
+    required int milestone,
   })  : _name = name,
         _email = email,
         _password = password,
@@ -30,7 +32,8 @@ class User {
         _plan = plan,
         _debtList = debtList,
         _budget = budget,
-        _expenses = expenses;
+        _expenses = expenses,
+        _milestone = milestone;
 
   // Getter methods
   String get name => _name;
@@ -41,6 +44,7 @@ class User {
   List<Debt> get debtList => _debtList;
   double get budget => _budget;
   List<Expense> get expenses => _expenses;
+  int get milestone => _milestone;
 
   // Setter methods
   set name(String name) {
@@ -73,5 +77,9 @@ class User {
 
   set expenses(List<Expense> expenses) {
     _expenses = expenses;
+  }
+
+  set milestone(int milestone) {
+    _milestone = milestone;
   }
 }
