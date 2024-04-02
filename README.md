@@ -22,5 +22,3 @@ Debtstiny is a mobile application designed using the Flutter framework to empowe
 3. Run the app: flutter run on main.dart
 Reminder :  This app is only front-end coded with a partially complete back end
 
-## Pitching Video
-https://drive.google.com/file/d/1_YErJkgwt5GWdUl6-YpmJSu2vghmuG9G/view?usp=sharing
